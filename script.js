@@ -1,13 +1,18 @@
-const buttons = document.querySelectorAll('[data-click="chage-text-style"]');
+const buttons = document.querySelectorAll('[data-click="change-text-style"]');
+const fontButtons = document.querySelectorAll('[data-click="change-font-style]');
 const text = document.querySelectorAll('.text')
+const selectFont = document.querySelector('.select_font')
+const selectSize = document.querySelector('.select_size')
+const selectColor = document.querySelector('.select_color')
 
 class TextEditor {
     constructor() {
-        document.addEventListener('click', (e) => this.clickOnButtons(e))
+        document.addEventListener('click', (e) => this.clickOnFontButtons(e))
+        document.addEventListener('click', (e) => this.clickOnStyleButtons(e))
     }
 
-    clickOnButtons(e) {
-        const actionTypes = ['bold', 'italic', 'under', 'through', 'left', 'center', 'right']
+    clickOnFontButtons(e) {
+        const actionTypes = ['twelve', 'fourteen', 'sixteen', 'eighteen', 'twenty', 'twenty-two', 'twenty-five', 'thirty']
 
         let currentType;
 
@@ -15,47 +20,111 @@ class TextEditor {
             if (e.target.dataset.change === type) currentType = type;
         }
 
-        function toggleTextClass(className){
+        const addFontSize = (size) => {
+            text.forEach(item => {
+                item.classList.remove('twelve', 'fourteen', 'sixteen', 'eighteen', 'twenty', 'twenty-two', 'twenty-five', 'thirty')
+                item.classList.add(size)
+            })
+        }
+
+        switch (currentType) {
+            case 'twelve':
+                addFontSize('twelve')
+                break;
+            case 'fourteen':
+                addFontSize('fourteen')
+                break;
+            case 'sixteen':
+                addFontSize('sixteen')
+                break;
+            case 'eighteen':
+                addFontSize('eighteen')
+                break;
+            case 'twenty':
+                addFontSize('twenty')
+                break;
+            case 'twenty-two':
+                addFontSize('twenty-two')
+                break;
+            case 'twenty-five':
+                addFontSize('twenty-five')
+                break;
+            case 'thirty':
+                addFontSize('thirty')
+                break;
+
+        }
+    }
+
+    clickOnStyleButtons(e) {
+        const actionTypes = ['bold', 'italic', 'under', 'through', 'left', 'center', 'right', 'font', 'size']
+
+        let currentType;
+
+        for (let type of actionTypes) {
+            if (e.target.dataset.change === type) currentType = type;
+        }
+
+        const toggleTextClass = (className) => {
             text.forEach(item => {
                 item.classList.toggle(className);
             })
         }
 
-        function removeAlignClasses(){
+        const removeAlignClasses = () => {
             text.forEach(item => {
                 item.classList.remove('right', 'left', 'center');
-               // item.classList.remove('right');
-               // item.classList.remove('right');
             })
+        }
+
+        const changeActiveClass = () => {
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            })
+            e.target.classList.add('active');
+        }
+
+        const openList = (list) => {
+            list.classList.toggle('hidden')
         }
 
         switch (currentType) {
             case 'bold':
                 toggleTextClass('bold');
+                changeActiveClass();
                 break;
             case 'italic':
                 toggleTextClass('italic');
+                changeActiveClass();
                 break;
             case 'under':
                 toggleTextClass('under');
+                changeActiveClass();
                 break;
             case 'through':
                 toggleTextClass('through');
+                changeActiveClass();
                 break;
             case 'left':
                 removeAlignClasses();
                 toggleTextClass('left');
-                
+                changeActiveClass();
                 break;
             case 'center':
                 removeAlignClasses();
                 toggleTextClass('center');
-                
+                changeActiveClass();
                 break;
             case 'right':
                 removeAlignClasses();
                 toggleTextClass('right');
+                changeActiveClass();
                 break;
+            case 'font':
+                openList(selectFont);
+                break;
+            case 'size':
+                openList(selectSize);
         }
     }
 }
