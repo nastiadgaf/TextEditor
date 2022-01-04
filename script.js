@@ -84,7 +84,7 @@ class TextEditor {
     }
 
     clickOnStyleButtons(e) {
-        const actionTypes = ['bold', 'italic', 'under', 'through', 'left', 'center', 'right', 'font', 'size']
+        const actionTypes = ['bold', 'italic', 'under', 'through', 'left', 'center', 'right', 'font', 'size', 'color', 'close']
 
         let currentType;
 
@@ -111,8 +111,20 @@ class TextEditor {
             e.target.classList.add('active');
         }
 
-        const openList = (list) => {
+        const toggleList = (list, closeList) => {
+            closeList.classList.add('hidden');
             list.classList.toggle('hidden')
+        }
+
+        const showModal = (modalSelector) => {
+            let modal = document.querySelector(modalSelector);
+
+            modal.classList.toggle('hidden');
+        }
+
+        const closeModal = (modalSelector) => {
+            let modal = document.querySelector(modalSelector);
+            modal.classList.add('hidden');
         }
 
         switch (currentType) {
@@ -148,10 +160,17 @@ class TextEditor {
                 changeActiveClass();
                 break;
             case 'font':
-                openList(selectFont);
+                toggleList(selectFont, selectSize);
                 break;
             case 'size':
-                openList(selectSize);
+                toggleList(selectSize, selectFont);
+                break;
+            case 'color':
+                showModal('#color-modal');
+                break;
+            case 'close':
+                closeModal('#color-modal');
+                break;
         }
     }
 }
