@@ -12,7 +12,9 @@ class TextEditor {
     }
 
     clickOnFontButtons(e) {
-        const actionTypes = ['twelve', 'fourteen', 'sixteen', 'eighteen', 'twenty', 'twenty-two', 'twenty-five', 'thirty']
+        const actionTypes = ['twelve', 'fourteen', 'sixteen', 'eighteen', 'twenty', 'twenty-two', 'twenty-five', 'thirty',
+            'arial', 'georgia', 'impact', 'tahoma', 'times', 'verdana'
+        ]
 
         let currentType;
 
@@ -24,6 +26,13 @@ class TextEditor {
             text.forEach(item => {
                 item.classList.remove('twelve', 'fourteen', 'sixteen', 'eighteen', 'twenty', 'twenty-two', 'twenty-five', 'thirty')
                 item.classList.add(size)
+            })
+        }
+
+        const changeFontFamily = (font) => {
+            text.forEach(item => {
+                item.classList.remove('arial', 'georgia', 'impact', 'tahoma', 'times', 'verdana')
+                item.classList.add(font)
             })
         }
 
@@ -51,6 +60,24 @@ class TextEditor {
                 break;
             case 'thirty':
                 addFontSize('thirty')
+                break;
+            case 'arial':
+                changeFontFamily('arial')
+                break;
+            case 'georgia':
+                changeFontFamily('georgia')
+                break;
+            case 'impact':
+                changeFontFamily('impact')
+                break;
+            case 'tahoma':
+                changeFontFamily('tahoma')
+                break;
+            case 'times':
+                changeFontFamily('times')
+                break;
+            case 'verdana':
+                changeFontFamily('verdana')
                 break;
 
         }

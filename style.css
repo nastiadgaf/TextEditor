@@ -1,3 +1,33 @@
+@font-face {
+  font-family: "Arial";
+  src: url("fonts/arial.woff2");
+}
+
+@font-face {
+  font-family: "Georgia";
+  src: url("fonts/georgia.woff2");
+}
+
+@font-face {
+  font-family: "Impact";
+  src: url("fonts/impact.woff2");
+}
+
+@font-face {
+  font-family: "Tahoma";
+  src: url("fonts/tahoma.woff2");
+}
+
+@font-face {
+  font-family: "Times New Roman";
+  src: url("fonts/TimesNewRoman.woff2");
+}
+
+@font-face {
+  font-family: "Verdana";
+  src: url("fonts/verdana.woff2");
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -129,5 +159,29 @@ body {
 
 .thirty {
   font-size: 30px;
+}
+
+.arial {
+  font-family: "Arial";
+}
+
+.georgia {
+  font-family: "Georgia";
+}
+
+.impact {
+  font-family: "Impact";
+}
+
+.tahoma {
+  font-family: "Tahoma";
+}
+
+.times {
+  font-family: "Times New Roman";
+}
+
+.verdana {
+  font-family: "Verdana";
 }
 /*# sourceMappingURL=style.css.map */
