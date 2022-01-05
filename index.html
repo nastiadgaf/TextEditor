@@ -60,8 +60,8 @@
                 <img src="images/palette-icon.png" data-click="change-font-style" alt="icon" class="buttons__icon"
                     data-change="color">
             </button>
-            <button class="buttons__item" data-click="change-text-style">
-                <img src="images/background-icon.png" data-click="change-text-style" alt="icon" class="buttons__icon">
+            <button class="buttons__item" data-click="change-text-style" data-change="bg-color">
+                <img src="images/background-icon.png" data-click="change-text-style" alt="icon" class="buttons__icon" data-change="bg-color">
             </button>
         </div>
 
@@ -110,7 +110,7 @@
                 <button class="color__btn dark-green-bg" data-change="dark-green"></button>
                 <button class="color__btn light-blue-bg" data-change="ligth-blue"></button>
                 <button class="color__btn blue-bg" data-change="blue"></button>
-                <button class="color__btn light-purple-bg" data-change="light-purle"></button>
+                <button class="color__btn light-purple-bg" data-change="light-purple"></button>
                 <button class="color__btn dark-purple-bg" data-change="dark-purple"></button>
                 <button class="color__btn dark-blue-bg" data-change="dark-blue"></button>
                 <button class="color__btn navy-blue-bg" data-change="navy-blue"></button>
@@ -129,6 +129,56 @@
         </div>
     </div>
 
+    <div id="bg-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" data-change="close">&times;</span>
+            <h2 class="heading modal__heading">Choose background color or image!</h2>
+            <ul class="modal__list">
+                <li class="list__item" data-change="bg-colors">Colors</li>
+                <li class="list__item" data-change="bg-images">Images</li>
+                <li class="list__item" data-change="bg-files">Files</li>
+            </ul>
+            <div class="color__buttons color__buttons-bg ">
+                <button class="color__btn light-turquoise-bg" data-change="light-turquoise-bg"></button>
+                <button class="color__btn dark-turquoise-bg" data-change="dark-turquoise-bg"></button>
+                <button class="color__btn light-green-bg" data-change="light-green-bg"></button>
+                <button class="color__btn dark-green-bg" data-change="dark-green-bg"></button>
+                <button class="color__btn light-blue-bg" data-change="light-blue-bg"></button>
+                <button class="color__btn blue-bg" data-change="blue-bg"></button>
+                <button class="color__btn light-purple-bg" data-change="light-purple-bg"></button>
+                <button class="color__btn dark-purple-bg" data-change="dark-purple-bg"></button>
+                <button class="color__btn dark-blue-bg" data-change="dark-blue-bg"></button>
+                <button class="color__btn navy-blue-bg" data-change="navy-blue-bg"></button>
+                <button class="color__btn yellow-bg" data-change="yellow-bg"></button>
+                <button class="color__btn light-orange-bg" data-change="light-orange-bg"></button>
+                <button class="color__btn orange-bg" data-change="orange-bg"></button>
+                <button class="color__btn dark-orange-bg" data-change="dark-orange-bg"></button>
+                <button class="color__btn light-red-bg" data-change="light-red-bg"></button>
+                <button class="color__btn red-bg" data-change="red-bg"></button>
+                <button class="color__btn white-bg" data-change="white-bg"></button>
+                <button class="color__btn light-grey-bg" data-change="light-grey-bg"></button>
+                <button class="color__btn grey-bg" data-change="grey-bg"></button>
+                <button class="color__btn dark-grey-bg" data-change="dark-grey-bg"></button>
+                <button class="color__btn black-bg" data-change="black-bg"></button>
+            </div>
+
+            <div class="images__buttons hidden">
+                <button class="images__btn bridge" data-change="bridge"></button>
+                <button class="images__btn field" data-change="field"></button>
+                <button class="images__btn forest" data-change="forest"></button>
+                <button class="images__btn lake" data-change="lake"></button>
+                <button class="images__btn mountains" data-change="mountains"></button>
+                <button class="images__btn rock" data-change="rock"></button>
+                <button class="images__btn sun" data-change="sun"></button>
+                <button class="images__btn tree" data-change="tree"></button>
+                <button class="images__btn waterfall" data-change="waterfall"></button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <input type="file" name="" id="">
     <script src="script.js"></script>
 </body>
 
