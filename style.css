@@ -34,6 +34,11 @@ body {
   background-size: cover;
 }
 
+main {
+  position: relative;
+  z-index: 0;
+}
+
 .header {
   background-color: grey;
   width: 100%;
@@ -87,13 +92,45 @@ body {
 
 .buttons__select {
   z-index: 1;
-  position: relative;
-  left: 800px;
-  background-color: #ebebebee;
-  border-radius: 10%;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
   list-style: none;
-  padding: 10px 20px;
-  max-width: 150px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.select__item {
+  line-height: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.select__item:hover {
+  background-color: #f1f1f1;
+}
+
+.select_font {
+  left: 800px;
+  top: 90px;
+  width: 200px;
+}
+
+.select_size {
+  top: 80px;
+  left: 900px;
+  height: 250px;
+  width: 100px;
 }
 
 .color__buttons {
@@ -187,6 +224,63 @@ body {
   border-radius: 5px;
   cursor: pointer;
   background-size: cover;
+}
+
+.sign-modal__heading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sign__inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+.sign__input {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: 1.5px solid #a8a8a8;
+  cursor: pointer;
+}
+
+.sign__input:hover {
+  -webkit-box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+          box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.sign-in__btn {
+  width: 100%;
+  height: 35px;
+  color: white;
+  background-color: grey;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.sign-in__btn:hover {
+  background-color: #757575;
+}
+
+.invalid {
+  border: 1.6px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
 }
 
 .bold {

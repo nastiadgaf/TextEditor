@@ -10,6 +10,7 @@ class TextEditor {
     constructor() {
         document.addEventListener('click', (e) => this.clickOnFontButtons(e))
         document.addEventListener('click', (e) => this.clickOnStyleButtons(e))
+        this.validateSingInInputs();
     }
 
     clickOnFontButtons(e) {
@@ -266,7 +267,9 @@ class TextEditor {
     }
 
     clickOnStyleButtons(e) {
-        const actionTypes = ['bold', 'italic', 'under', 'through', 'left', 'center', 'right', 'font', 'size', 'color', 'close', 'bg-color', 'bg-colors', 'bg-images', 'bg-files']
+        const actionTypes = ['bold', 'italic', 'under', 'through', 'left', 'center', 'right', 'font', 'size', 'color', 'close', 'bg-color',
+            'bg-colors', 'bg-images', 'bg-files', 'sign-in'
+        ]
 
         let currentType;
 
@@ -298,16 +301,7 @@ class TextEditor {
             list.classList.toggle('hidden')
         }
 
-        const showModal = (modalSelector) => {
-            let modal = document.querySelector(modalSelector);
-
-            modal.classList.toggle('hidden');
-        }
-
-        const closeModal = (modalSelector) => {
-            let modal = document.querySelector(modalSelector);
-            modal.classList.add('hidden');
-        }
+        
 
         switch (currentType) {
             case 'bold':
@@ -348,25 +342,83 @@ class TextEditor {
                 toggleList(selectSize, selectFont);
                 break;
             case 'color':
-                showModal('#color-modal');
+                this.showModal('#color-modal');
                 break;
             case 'close':
-                closeModal('#color-modal');
-                closeModal('#bg-modal');
+                this.closeModal('#color-modal');
+                this.closeModal('#bg-modal');
+                this.closeModal('#sign-modal');
                 break;
             case 'bg-color':
-                showModal('#bg-modal');
+                this.showModal('#bg-modal');
                 break;
             case 'bg-colors':
-                closeModal('.images__buttons')
-                showModal('.color__buttons-bg');
+                this.closeModal('.images__buttons')
+                this.showModal('.color__buttons-bg');
                 break;
             case 'bg-images':
-                closeModal('.color__buttons-bg')
-                showModal('.images__buttons');
+                this.closeModal('.color__buttons-bg')
+                this.showModal('.images__buttons');
+                break;
+            case 'sign-in':
+                this.showModal('#sign-modal');
                 break;
         }
     }
+
+    showModal(modalSelector){
+        let modal = document.querySelector(modalSelector);
+
+        modal.classList.toggle('hidden');
+    }
+
+    closeModal(modalSelector){
+        let modal = document.querySelector(modalSelector);
+        modal.classList.add('hidden');
+    }
+
+    validateSingInInputs() {
+        this.login = 'admin';
+        this.password = 'password';
+
+        this.loginInput = document.querySelector('[data-input="login"]')
+        this.passwordInput = document.querySelector('[data-input="password"]')
+        this.signInButton = document.querySelector('[data-input="button"]')
+        this.inputBlock = document.querySelector('.inputs');
+
+        this.messageEmpty = document.createElement('p');
+        this.messageEmpty.textContent = 'Value is empty';
+        this.messageEmpty.classList.add('error')
+
+        this.messageIncorrect = document.createElement('p');
+        this.messageIncorrect.textContent = 'Check your login or password';
+        this.messageIncorrect.classList.add('error')
+
+        this.signInButton.addEventListener('click', () => {
+            if (this.loginInput.value === '' || this.passwordInput.value === '') {
+                this.loginInput.classList.add('invalid');
+                this.passwordInput.classList.add('invalid');
+                this.inputBlock.append(this.messageEmpty);
+                this.messageIncorrect.remove()
+            } else if (this.loginInput.value !== this.login || this.passwordInput.value !== this.password){
+                this.loginInput.classList.add('invalid');
+                this.passwordInput.classList.add('invalid');
+                this.inputBlock.append(this.messageIncorrect);
+                this.messageEmpty.remove();
+            } else {
+                this.loginInput.value = ''
+                this.passwordInput.value = ''
+                this.loginInput.classList.remove('invalid')
+                this.passwordInput.classList.remove('invalid')
+                this.messageEmpty.remove();
+                this.messageIncorrect.remove();
+                this.closeModal('#sign-modal')
+            }
+        })
+
+    }
+    
+
 }
 
 let textEdit = new TextEditor();
