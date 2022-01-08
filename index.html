@@ -12,8 +12,8 @@
 <body>
     <header class="header">
         <div class="header__buttons " data-click="">
-            <button class="buttons__item" data-click="">
-                <img src="images/code-icon.png" data-click="" alt="icon" class="buttons__icon">
+            <button class="buttons__item" data-click="edit">
+                <img src="images/code-icon.png" data-click="edit" alt="icon" class="buttons__icon">
             </button>
         </div>
 
@@ -68,6 +68,9 @@
         <div class="header__buttons">
             <button class="buttons__item" data-click="change-text-style" data-change="sign-in">
                 <img src="images/lock-icon.png" data-click="change-text-style" alt="icon" class=" buttons__icon" data-change="sign-in">
+            </button>
+            <button class="buttons__item hidden" data-click="change-text-style" data-change="sign-out">
+                <img src="images/open-lock-icon.png" data-click="change-text-style" alt="icon" class=" buttons__icon" data-change="sign-out">
             </button>
         </div>
     </header>
@@ -187,6 +190,16 @@
                 </div>
                 
                 <button type="button" class="sign-in__btn" data-input="button">Sign in</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="sign-out" class="modal hidden">
+        <div class="modal-content modal-content__sign-out">
+            <div class="sign-out__buttons">
+                <button class="sign-out__button cancel" data-click="cancel">Cancel</button>
+                <button class="sign-out__button confirm" data-click="confirm">Sign out</button>
             </div>
             
         </div>

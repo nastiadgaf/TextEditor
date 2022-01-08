@@ -274,6 +274,45 @@ main {
   background-color: #757575;
 }
 
+.sign-out__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.sign-out__button {
+  padding: 15px 45px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.modal-content__sign-out {
+  width: 350px;
+  margin: 15% auto;
+}
+
+.cancel {
+  background-color: #242424;
+}
+
+.confirm {
+  background-color: #8d2828;
+}
+
 .invalid {
   border: 1.6px solid red;
 }

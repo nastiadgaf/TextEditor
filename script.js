@@ -5,7 +5,9 @@ const text = document.querySelectorAll('.text')
 const selectFont = document.querySelector('.select_font')
 const selectSize = document.querySelector('.select_size')
 const selectColor = document.querySelector('.select_color')
+const editButton = document.querySelector('[data-click="edit"]');
 
+editButton.disabled = true;
 class TextEditor {
     constructor() {
         document.addEventListener('click', (e) => this.clickOnFontButtons(e))
@@ -301,7 +303,7 @@ class TextEditor {
             list.classList.toggle('hidden')
         }
 
-        
+
 
         switch (currentType) {
             case 'bold':
@@ -366,13 +368,13 @@ class TextEditor {
         }
     }
 
-    showModal(modalSelector){
+    showModal(modalSelector) {
         let modal = document.querySelector(modalSelector);
 
         modal.classList.toggle('hidden');
     }
 
-    closeModal(modalSelector){
+    closeModal(modalSelector) {
         let modal = document.querySelector(modalSelector);
         modal.classList.add('hidden');
     }
@@ -394,13 +396,17 @@ class TextEditor {
         this.messageIncorrect.textContent = 'Check your login or password';
         this.messageIncorrect.classList.add('error')
 
+
+        this.signOut = document.querySelector('[data-change="sign-out"]')
+        this.signIn = document.querySelector('[data-change="sign-in"]')
+
         this.signInButton.addEventListener('click', () => {
             if (this.loginInput.value === '' || this.passwordInput.value === '') {
                 this.loginInput.classList.add('invalid');
                 this.passwordInput.classList.add('invalid');
                 this.inputBlock.append(this.messageEmpty);
                 this.messageIncorrect.remove()
-            } else if (this.loginInput.value !== this.login || this.passwordInput.value !== this.password){
+            } else if (this.loginInput.value !== this.login || this.passwordInput.value !== this.password) {
                 this.loginInput.classList.add('invalid');
                 this.passwordInput.classList.add('invalid');
                 this.inputBlock.append(this.messageIncorrect);
@@ -413,12 +419,34 @@ class TextEditor {
                 this.messageEmpty.remove();
                 this.messageIncorrect.remove();
                 this.closeModal('#sign-modal')
+                this.signOut.classList.remove('hidden')
+                this.signIn.classList.add('hidden')
+                editButton.disabled = false;
             }
         })
 
     }
-    
+
+    logOut() {
+        this.cancel = document.querySelector('[data-click="cancel"]')
+        this.confirm = document.querySelector('[data-click="confirm"]')
+        this.signOut.addEventListener('click', () => {
+            this.showModal('#sign-out')
+        })
+        this.cancel.addEventListener('click', () => {
+            this.closeModal('#sign-out')
+        })
+
+        this.confirm.addEventListener('click', () => {
+            this.closeModal('#sign-out')
+            this.signOut.classList.add('hidden')
+            this.signIn.classList.remove('hidden')
+            editButton.disabled = true;
+        })
+    }
 
 }
 
 let textEdit = new TextEditor();
+
+textEdit.logOut()
