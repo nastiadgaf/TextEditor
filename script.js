@@ -33,6 +33,10 @@ class TextEditor {
             if (e.target.dataset.change === type) currentType = type;
         }
 
+        const closeList = (list) => {
+            list.classList.add('hidden');
+        }
+
         const addFontSize = (size) => {
             text.forEach(item => {
                 item.classList.remove('twelve', 'fourteen', 'sixteen', 'eighteen', 'twenty', 'twenty-two', 'twenty-five', 'thirty')
@@ -72,45 +76,59 @@ class TextEditor {
         switch (currentType) {
             case 'twelve':
                 addFontSize('twelve')
+                closeList(selectSize)
                 break;
             case 'fourteen':
                 addFontSize('fourteen')
+                closeList(selectSize)
                 break;
             case 'sixteen':
                 addFontSize('sixteen')
+                closeList(selectSize)
                 break;
             case 'eighteen':
                 addFontSize('eighteen')
+                closeList(selectSize)
                 break;
             case 'twenty':
                 addFontSize('twenty')
+                closeList(selectSize)
                 break;
             case 'twenty-two':
                 addFontSize('twenty-two')
+                closeList(selectSize)
                 break;
             case 'twenty-five':
                 addFontSize('twenty-five')
+                closeList(selectSize)
                 break;
             case 'thirty':
                 addFontSize('thirty')
+                closeList(selectSize)
                 break;
             case 'arial':
                 changeFontFamily('arial')
+                closeList(selectFont)
                 break;
             case 'georgia':
                 changeFontFamily('georgia')
+                closeList(selectFont)
                 break;
             case 'impact':
                 changeFontFamily('impact')
+                closeList(selectFont)
                 break;
             case 'tahoma':
                 changeFontFamily('tahoma')
+                closeList(selectFont)
                 break;
             case 'times':
                 changeFontFamily('times')
+                closeList(selectFont)
                 break;
             case 'verdana':
                 changeFontFamily('verdana')
+                closeList(selectFont)
                 break;
             case 'light-turquoise':
                 changeFontColor('light-turquoise')
