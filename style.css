@@ -39,6 +39,15 @@ main {
   z-index: 0;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  padding: 0;
+  list-style: none;
+}
+
 .header {
   background-color: grey;
   width: 100%;
@@ -69,6 +78,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   padding: 2px;
+  list-style: none;
 }
 
 .buttons__item {
@@ -108,6 +118,7 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 0;
 }
 
 .select__item {
@@ -134,7 +145,15 @@ main {
 }
 
 .color__buttons {
-  padding: 10px;
+  padding: 20px;
+}
+
+.list-horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .color__btn {
@@ -356,146 +375,6 @@ main {
 
 .hidden {
   display: none;
-}
-
-.twelve {
-  font-size: 12px;
-}
-
-.fourteen {
-  font-size: 14px;
-}
-
-.sixteen {
-  font-size: 16px;
-}
-
-.eighteen {
-  font-size: 18px;
-}
-
-.twenty {
-  font-size: 20px;
-}
-
-.twenty-two {
-  font-size: 22px;
-}
-
-.twenty-five {
-  font-size: 25px;
-}
-
-.thirty {
-  font-size: 30px;
-}
-
-.arial {
-  font-family: "Arial";
-}
-
-.georgia {
-  font-family: "Georgia";
-}
-
-.impact {
-  font-family: "Impact";
-}
-
-.tahoma {
-  font-family: "Tahoma";
-}
-
-.times {
-  font-family: "Times New Roman";
-}
-
-.verdana {
-  font-family: "Verdana";
-}
-
-.light-turquoise {
-  color: #0ba99a;
-}
-
-.dark-turquoise {
-  color: #089082;
-}
-
-.light-green {
-  color: #1fb56b;
-}
-
-.dark-green {
-  color: #1b9b5e;
-}
-
-.light-blue {
-  color: #2791dd;
-}
-
-.blue {
-  color: #207ab9;
-}
-
-.light-purple {
-  color: #9b64b5;
-}
-
-.dark-purple {
-  color: #9051ac;
-}
-
-.dark-blue {
-  color: #32485f;
-}
-
-.navy-blue {
-  color: #283d50;
-}
-
-.yellow {
-  color: #f5bd06;
-}
-
-.light-orange {
-  color: #f79b0a;
-}
-
-.orange {
-  color: #ed821a;
-}
-
-.dark-orange {
-  color: #db5b00;
-}
-
-.light-red {
-  color: #f35a3a;
-}
-
-.red {
-  color: #c84626;
-}
-
-.white {
-  color: #eaeef1;
-}
-
-.light-grey {
-  color: #bcc1c5;
-}
-
-.grey {
-  color: #90a2a4;
-}
-
-.dark-grey {
-  color: #7c8a8b;
-}
-
-.black {
-  color: #000000;
 }
 
 .light-turquoise-bg {
