@@ -428,10 +428,8 @@ class TextEditor {
                 break;
         }
     }
-
     showModal(modalSelector) {
         let modal = document.querySelector(modalSelector);
-
         modal.classList.toggle('hidden');
     }
 
