@@ -296,35 +296,35 @@ class TextEditor {
         switch (currentType) {
             case 'twelve':
                 addFontSize('12px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'fourteen':
                 addFontSize('14px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'sixteen':
                 addFontSize('16px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'eighteen':
                 addFontSize('18px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'twenty':
                 addFontSize('20px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'twenty-two':
                 addFontSize('22px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'twenty-five':
                 addFontSize('25px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
             case 'thirty':
                 addFontSize('30px')
-                closeList(selectSize)
+                this.closeList(selectSize)
                 break;
         }
     }
@@ -363,8 +363,6 @@ class TextEditor {
             closeList.classList.add('hidden');
             list.classList.toggle('hidden')
         }
-
-
 
         switch (currentType) {
             case 'bold':
@@ -406,6 +404,8 @@ class TextEditor {
                 break;
             case 'color':
                 this.showModal('#color-modal');
+                this.closeList(selectSize)
+                this.closeList(selectFont)
                 break;
             case 'close':
                 this.closeModal('#color-modal');
@@ -414,6 +414,8 @@ class TextEditor {
                 break;
             case 'bg-color':
                 this.showModal('#bg-modal');
+                this.closeList(selectSize)
+                this.closeList(selectFont)
                 break;
             case 'bg-colors':
                 this.closeModal('.images__buttons')
@@ -425,6 +427,8 @@ class TextEditor {
                 break;
             case 'sign-in':
                 this.showModal('#sign-modal');
+                this.closeList(selectSize)
+                this.closeList(selectFont)
                 break;
         }
     }
@@ -441,6 +445,19 @@ class TextEditor {
     closeList = (list) => {
         list.classList.add('hidden');
     }
+
+    createMessage = (message, text) => {
+        message = document.createElement('p');
+        message.textContent = text;
+        message.classList.add('error')
+        this.inputBlock.append(message)
+    }
+
+    addInvalidClassToInputs(){
+        this.loginInput.classList.add('invalid');
+        this.passwordInput.classList.add('invalid');
+    }
+
     validateSingInInputs() {
         this.login = 'admin';
         this.password = 'password';
@@ -450,36 +467,25 @@ class TextEditor {
         this.signInButton = document.querySelector('[data-input="button"]')
         this.inputBlock = document.querySelector('.inputs');
 
-        this.messageEmpty = document.createElement('p');
-        this.messageEmpty.textContent = 'Value is empty';
-        this.messageEmpty.classList.add('error')
-
-        this.messageIncorrect = document.createElement('p');
-        this.messageIncorrect.textContent = 'Check your login or password';
-        this.messageIncorrect.classList.add('error')
-
-
         this.signOut = document.querySelector('[data-change="sign-out"]')
         this.signIn = document.querySelector('[data-change="sign-in"]')
 
         this.signInButton.addEventListener('click', () => {
             if (this.loginInput.value === '' || this.passwordInput.value === '') {
-                this.loginInput.classList.add('invalid');
-                this.passwordInput.classList.add('invalid');
-                this.inputBlock.append(this.messageEmpty);
+                this.addInvalidClassToInputs();
+                this.createMessage(this.messageEmpty, 'Value is empty')
                 this.messageIncorrect.remove()
             } else if (this.loginInput.value !== this.login || this.passwordInput.value !== this.password) {
-                this.loginInput.classList.add('invalid');
-                this.passwordInput.classList.add('invalid');
-                this.inputBlock.append(this.messageIncorrect);
+                this.addInvalidClassToInputs();
+                this.createMessage(this.messageIncorrect, 'Check your login or password')
                 this.messageEmpty.remove();
             } else {
                 this.loginInput.value = ''
                 this.passwordInput.value = ''
                 this.loginInput.classList.remove('invalid')
                 this.passwordInput.classList.remove('invalid')
-                this.messageEmpty.remove();
-                this.messageIncorrect.remove();
+                //this.messageEmpty.remove();
+                //this.messageIncorrect.remove();
                 this.closeModal('#sign-modal')
                 this.signOut.classList.remove('hidden')
                 this.signIn.classList.add('hidden')
@@ -490,16 +496,15 @@ class TextEditor {
     }
 
     logOut() {
-        this.cancel = document.querySelector('[data-click="cancel"]')
-        this.confirm = document.querySelector('[data-click="confirm"]')
+        const cancel = document.querySelector('[data-click="cancel"]')
+        const confirm = document.querySelector('[data-click="confirm"]')
         this.signOut.addEventListener('click', () => {
             this.showModal('#sign-out')
         })
-        this.cancel.addEventListener('click', () => {
+        cancel.addEventListener('click', () => {
             this.closeModal('#sign-out')
         })
-
-        this.confirm.addEventListener('click', () => {
+        confirm.addEventListener('click', () => {
             this.closeModal('#sign-out')
             this.signOut.classList.add('hidden')
             this.signIn.classList.remove('hidden')

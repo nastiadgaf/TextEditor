@@ -101,6 +101,10 @@
   padding: 0;
 }
 
+.button-pos {
+  position: relative;
+}
+
 .select__item {
   line-height: 30px;
   cursor: pointer;
@@ -323,7 +327,6 @@ body {
 }
 
 main {
-  position: relative;
   z-index: 0;
 }
 
@@ -347,5 +350,33 @@ li {
 
 .hidden {
   display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.under {
+  text-decoration: underline;
+}
+
+.through {
+  text-decoration: line-through;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
 }
 /*# sourceMappingURL=style.css.map */
