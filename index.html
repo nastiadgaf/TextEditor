@@ -12,91 +12,89 @@
 <body>
     <header class="header">
         <div class="header__buttons " data-click="">
-            <button class="buttons__item" data-click="edit" style="background-image: url(images/code-icon.png);">
-            </button>
+            <button class="buttons__item" data-click="edit" style="background-image: url(images/code-icon.png);"></button>
         </div>
 
 
         <ul class="header__buttons ">
             <li>
-                <button class="buttons__item" data-change="bold" data-click="change-text-style" style="background-image: url(images/bold-icon.png);">
+                <button class="buttons__item" data-type="font-weight" data-value="bold" data-place="text" style="background-image: url(images/bold-icon.png);">
                 </button>
             </li>
             <li>
-                <button class="buttons__item" data-change="italic" data-click="change-text-style" style="background-image: url(images/italic-icon.png);">
+                <button class="buttons__item" data-type="font-style" data-value="italic" style="background-image: url(images/italic-icon.png);">
                 </button>
             </li>
             <li>
-                <button class="buttons__item" data-click="change-text-style" data-change="under" style="background-image: url(images/under-icon.png);">
+                <button class="buttons__item" data-type="text-decoration" data-value="underline" style="background-image: url(images/under-icon.png);">
                 </button>
             </li>
             <li>
-                <button class="buttons__item" data-click="change-text-style" data-change="through" style="background-image: url(images/through-icon.png);">
-                </button>
-            </li>
-        </ul>
-
-        <ul class="header__buttons">
-            <li>
-                <button class="buttons__item" data-click="change-text-style" data-change="left" style="background-image: url(images/left-icon.png);">
-                </button>
-            </li>
-            <li>
-                <button class="buttons__item" data-click="change-text-style" data-change="center" style="background-image: url(images/center-icon.png);">
-                </button>
-            </li>
-            <li>
-                <button class="buttons__item" data-change="right" data-click="change-text-style" style="background-image: url(images/right-icon.png);">
+                <button class="buttons__item" data-type="text-decoration" data-value="line-through" style="background-image: url(images/through-icon.png);">
                 </button>
             </li>
         </ul>
 
         <ul class="header__buttons">
             <li>
-                <button class="buttons__item button-pos" data-click="change-font-style" data-change="font" style="background-image: url(images/text-icon.png);">
+                <button class="buttons__item" data-type="text-align" data-value="left" style="background-image: url(images/left-icon.png);">
                 </button>
-                <ul class="buttons__select select_size hidden">
-                    <li class="select__item twelve" style="font-size: 12px;" data-change="twelve">12px</li>
-                    <li class="select__item fourteen" style="font-size: 14px;" data-change="fourteen">14px</li>
-                    <li class="select__item sixteen" style="font-size: 16px;" data-change="sixteen">16px</li>
-                    <li class="select__item eighteen" style="font-size: 18px;" data-change="eighteen">18px</li>
-                    <li class="select__item twenty" style="font-size: 20px;" data-change="twenty">20px</li>
-                    <li class="select__item twenty-two" style="font-size: 22px;" data-change="twenty-two">22px</li>
-                    <li class="select__item twenty-five" style="font-size: 25px;" data-change="twenty-five">25px</li>
-                    <li class="select__item thirty" style="font-size: 30px;" data-change="thirty">30px</li>
+            </li>
+            <li>
+                <button class="buttons__item" data-type="text-align" data-value="center" style="background-image: url(images/center-icon.png);">
+                </button>
+            </li>
+            <li>
+                <button class="buttons__item" data-type="text-align" data-value="right" style="background-image: url(images/right-icon.png);">
+                </button>
+            </li>
+        </ul>
+
+        <ul class="header__buttons">
+            <li>
+                <button class="buttons__item button-pos" data-modal="select_size" style="background-image: url(images/text-icon.png);">
+                </button>
+                <ul class="buttons__select select_size hidden" id="select_size">
+                    <li class="select__item twelve" style="font-size: 12px;" data-type="font-size" data-value="12px">12px</li>
+                    <li class="select__item fourteen" style="font-size: 14px;" data-type="font-size" data-value="14px">14px</li>
+                    <li class="select__item sixteen" style="font-size: 16px;" data-type="font-size" data-value="16px">16px</li>
+                    <li class="select__item eighteen" style="font-size: 18px;" data-type="font-size" data-value="18px">18px</li>
+                    <li class="select__item twenty" style="font-size: 20px;" data-type="font-size" data-value="20px">20px</li>
+                    <li class="select__item twenty-two" style="font-size: 22px;" data-type="font-size" data-value="22px">22px</li>
+                    <li class="select__item twenty-five" style="font-size: 25px;" data-type="font-size" data-value="25px">25px</li>
+                    <li class="select__item thirty" style="font-size: 30px;" data-type="font-size" data-value="30px">30px</li>
                 </ul>
             </li>
 
             <li>
-                <button class="buttons__item button-pos" data-click="change-font-style" data-change="size" style="background-image: url(images/text_size-icon.png);">
+                <button class="buttons__item button-pos" data-modal="select_font" style="background-image: url(images/text_size-icon.png);">
                 </button>
-                <ul class="buttons__select select_font hidden">
-                    <li class="select__item" style="font-family: 'Arial';" data-change="arial">Arial</li>
-                    <li class="select__item" style="font-family: 'Georgia';" data-change="georgia">Georgia</li>
-                    <li class="select__item" style="font-family: 'Impact';" data-change="impact">Impact</li>
-                    <li class="select__item" style="font-family: 'Tahoma';" data-change="tahoma">Tahoma</li>
-                    <li class="select__item" style="font-family: 'Times New Roman';" data-change="times">Times New Roman
-                    </li>
-                    <li class="select__item" style="font-family: 'Verdana';" data-change="verdana">Verdana</li>
+                <ul class="buttons__select select_font hidden" id="select_font">
+                    <li class="select__item" style="font-family: 'Arial';" data-type="font-family" data-value="Arial">Arial</li>
+                    <li class="select__item" style="font-family: 'Georgia';" data-type="font-family" data-value="Georgia">Georgia</li>
+                    <li class="select__item" style="font-family: 'Impact';" data-type="font-family" data-value="Impact">Impact</li>
+                    <li class="select__item" style="font-family: 'Tahoma';" data-type="font-family" data-value="Tahoma">Tahoma</li>
+                    <li class="select__item" style="font-family: 'Times New Roman';" data-type="font-family" data-value="TimesNewRoman">Times New Roman</li>
+                    <li class="select__item" style="font-family: 'Verdana';" data-type="font-family" data-value="Verdana">Verdana</li>
                 </ul>
             </li>
             <li>
-                <button class="buttons__item" data-click="change-font-style" data-change="color" style="background-image: url(images/palette-icon.png);">
+                <button class="buttons__item" data-modal="color-modal" style="background-image: url(images/palette-icon.png);">
                 </button>
             </li>
             <li>
-                <button class="buttons__item" data-click="change-text-style" data-change="bg-color" style="background-image: url(images/background-icon.png);">
+                <button class="buttons__item" data-modal="bg-modal" style="background-image: url(images/background-icon.png);">
                 </button>
             </li>
         </ul>
 
         <ul class="header__buttons">
             <li>
-                <button class="buttons__item" data-click="change-text-style" data-change="sign-in" style="background-image: url(images/lock-icon.png);">
+                <button class="buttons__item" data-modal="sign-modal" style="background-image: url(images/lock-icon.png);">
                 </button>
             </li>
             <li>
-                <button class="buttons__item hidden" data-click="change-text-style" data-change="sign-out" style="background-image: url(images/open-lock-icon.png);">
+                <button class="buttons__item hidden" data-modal="sign-out" data-change="sign-out" style="background-image: url(images/open-lock-icon.png);">
                 </button>
             </li>
 
@@ -111,47 +109,37 @@
 
     <div id="color-modal" class="modal hidden">
         <div class="modal-content">
-            <span class="close" data-change="close">&times;</span>
+            <span class="close" data-close="color-modal">&times;</span>
             <h2 class="heading modal__heading">Choose text color!</h2>
             <ul class="color__buttons list-horizontal">
-                <li><button class="color__btn" style="background-color: #0ba99a;"
-                        data-change="light-turquoise"></button></li>
-                <li><button class="color__btn" style="background-color: #089082;" data-change="dark-turquoise"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #1fb56b;" data-change="light-green"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #1b9b5e;" data-change="dark-green"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #2791dd;" data-change="ligth-blue"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #207ab9;" data-change="blue"></button></li>
-                <li><button class="color__btn" style="background-color: #9b64b5;" data-change="light-purple"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #9051ac;" data-change="dark-purple"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #32485f;" data-change="dark-blue"></button></li>
-                <li><button class="color__btn" style="background-color: #283d50;" data-change="navy-blue"></button></li>
-                <li><button class="color__btn" style="background-color: #f5bd06;" data-change="yellow"></button></li>
-                <li><button class="color__btn" style="background-color: #f79b0a;" data-change="light-orange"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #ed821a;" data-change="orange"></button></li>
-                <li><button class="color__btn" style="background-color: #db5b00;" data-change="dark-orange"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #f35a3a;" data-change="light-red"></button></li>
-                <li><button class="color__btn" style="background-color: #c84626;" data-change="red"></button></li>
-                <li><button class="color__btn" style="background-color: #eaeef1;" data-change="white"></button></li>
-                <li><button class="color__btn" style="background-color: #bcc1c5;" data-change="light-grey"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #90a2a4;" data-change="grey"></button></li>
-                <li><button class="color__btn" style="background-color: #7c8a8b;" data-change="dark-grey"></button></li>
-                <li><button class="color__btn" style="background-color: #000000;" data-change="black"></button></li>
+                <li><button class="color__btn" style="background-color: #0ba99a;" data-type="color" data-value="#0ba99a" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #089082;" data-type="color" data-value="#089082" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #1fb56b;" data-type="color" data-value="#1fb56b" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #1b9b5e;" data-type="color" data-value="#1b9b5e" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #2791dd;" data-type="color" data-value="#2791dd" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #207ab9;" data-type="color" data-value="#207ab9" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #9b64b5;" data-type="color" data-value="#9b64b5" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #9051ac;" data-type="color" data-value="#9051ac" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #32485f;" data-type="color" data-value="#32485f" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #283d50;" data-type="color" data-value="#283d50" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #f5bd06;" data-type="color" data-value="#f5bd06" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #f79b0a;" data-type="color" data-value="#f79b0a" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #ed821a;" data-type="color" data-value="#ed821a" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #db5b00;" data-type="color" data-value="#db5b00" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #f35a3a;" data-type="color" data-value="#f35a3a" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #c84626;" data-type="color" data-value="#c84626" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #eaeef1;" data-type="color" data-value="#eaeef1" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #bcc1c5;" data-type="color" data-value="#bcc1c5" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #90a2a4;" data-type="color" data-value="#90a2a4" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #7c8a8b;" data-type="color" data-value="#7c8a8b" data-place="text"></button></li>
+                <li><button class="color__btn" style="background-color: #000000;" data-type="color" data-value="#000000" data-place="text"></button></li>
             </ul>
         </div>
     </div>
 
     <div id="bg-modal" class="modal hidden">
         <div class="modal-content">
-            <span class="close" data-change="close">&times;</span>
+            <span class="close" data-close="bg-modal">&times;</span>
             <h2 class="heading modal__heading">Choose background color or image!</h2>
             <ul class="modal__list">
                 <li class="list__item" data-change="bg-colors">Colors</li>
@@ -159,69 +147,46 @@
                 <li class="list__item" data-change="bg-files">Files</li>
             </ul>
             <ul class="color__buttons color__buttons-bg list-horizontal">
-                <li><button class="color__btn" style="background-color: #0ba99a;"
-                        data-change="light-turquoise-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #089082;"
-                        data-change="dark-turquoise-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #1fb56b;" data-change="light-green-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #1b9b5e;" data-change="dark-green-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #2791dd;" data-change="ligth-blue-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #207ab9;" data-change="blue-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #9b64b5;"
-                        data-change="light-purple-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #9051ac;" data-change="dark-purple-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #32485f;" data-change="dark-blue-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #283d50;" data-change="navy-blue-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #f5bd06;" data-change="yellow-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #f79b0a;"
-                        data-change="light-orange-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #ed821a;" data-change="orange-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #db5b00;" data-change="dark-orange-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #f35a3a;" data-change="light-red-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #c84626;" data-change="red-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #eaeef1;" data-change="white-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #bcc1c5;" data-change="light-grey-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #90a2a4;" data-change="grey-bg"></button></li>
-                <li><button class="color__btn" style="background-color: #7c8a8b;" data-change="dark-grey-bg"></button>
-                </li>
-                <li><button class="color__btn" style="background-color: #000000;" data-change="black-bg"></button></li>
+                <li><button class="color__btn" style="background-color: #0ba99a;" data-type="background-color" data-value="#0ba99a" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #089082;" data-type="background-color" data-value="#089082" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #1fb56b;" data-type="background-color" data-value="#1fb56b" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #1b9b5e;" data-type="background-color" data-value="#1b9b5e" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #2791dd;" data-type="background-color" data-value="#2791dd" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #207ab9;" data-type="background-color" data-value="#207ab9" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #9b64b5;" data-type="background-color" data-value="#9b64b5" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #9051ac;" data-type="background-color" data-value="#9051ac" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #32485f;" data-type="background-color" data-value="#32485f" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #283d50;" data-type="background-color" data-value="#283d50" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #f5bd06;" data-type="background-color" data-value="#f5bd06" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #f79b0a;" data-type="background-color" data-value="#f79b0a" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #ed821a;" data-type="background-color" data-value="#ed821a" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #db5b00;" data-type="background-color" data-value="#db5b00" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #f35a3a;" data-type="background-color" data-value="#f35a3a" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #c84626;" data-type="background-color" data-value="#c84626" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #eaeef1;" data-type="background-color" data-value="#eaeef1" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #bcc1c5;" data-type="background-color" data-value="#bcc1c5" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #90a2a4;" data-type="background-color" data-value="#90a2a4" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #7c8a8b;" data-type="background-color" data-value="#7c8a8b" data-place="all"></button></li>
+                <li><button class="color__btn" style="background-color: #000000;" data-type="background-color" data-value="#000000" data-place="all"></button></li>
             </ul>
 
             <ul class="images__buttons hidden list-horizontal">
-                <li><button class="images__btn" style="background-image: url(images/bridge.jpg);"
-                        data-change="bridge"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/field.jpg);"
-                        data-change="field"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/forest.jpg);"
-                        data-change="forest"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/lake.jpg);"
-                        data-change="lake"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/mountains.jpg);"
-                        data-change="mountains"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/rock.jpg);"
-                        data-change="rock"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/sun.jpg);"
-                        data-change="sun"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/tree.jpg);"
-                        data-change="tree"></button></li>
-                <li><button class="images__btn" style="background-image: url(images/waterfall.jpg);"
-                        data-change="waterfall"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/bridge.jpg);" data-type="background-image" data-value="url(images/bridge.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/field.jpg);" data-type="background-image" data-value="url(images/field.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/forest.jpg);" data-type="background-image" data-value="url(images/forest.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/lake.jpg);" data-type="background-image" data-value="url(images/lake.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/mountains.jpg);"data-type="background-image" data-value="url(images/mountains.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/rock.jpg);" data-type="background-image" data-value="url(images/rock.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/sun.jpg);" data-type="background-image" data-value="url(images/sun.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/tree.jpg);" data-type="background-image" data-value="url(images/tree.jpg)"></button></li>
+                <li><button class="images__btn" style="background-image: url(images/waterfall.jpg);"data-type="background-image" data-value="url(images/waterfall.jpg)"></button></li>
             </ul>
         </div>
     </div>
 
     <div id="sign-modal" class="modal hidden">
         <div class="modal-content">
-            <span class="close" data-change="close">&times;</span>
+            <span class="close" data-close="sign-modal">&times;</span>
             <h2 class="heading sign-modal__heading ">Sign in</h2>
             <div class="sign__inputs">
                 <div class="inputs">
@@ -238,7 +203,7 @@
     <div id="sign-out" class="modal hidden">
         <div class="modal-content modal-content__sign-out">
             <div class="sign-out__buttons">
-                <button class="sign-out__button cancel" data-click="cancel">Cancel</button>
+                <button class="sign-out__button cancel" data-close="sign-out">Cancel</button>
                 <button class="sign-out__button confirm" data-click="confirm">Sign out</button>
             </div>
 
