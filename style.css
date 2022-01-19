@@ -65,19 +65,18 @@
   background-color: white;
   border: none;
   border-radius: 10px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
-  margin: 2px;
+  width: 34px;
+  height: 34px;
+  margin: 5px;
 }
 
 .arrow {
   margin-bottom: 5px;
   margin-left: 0;
-}
-
-.buttons__icon {
-  width: 24px;
-  height: 24px;
-  margin: 5px;
 }
 
 .buttons__select {
