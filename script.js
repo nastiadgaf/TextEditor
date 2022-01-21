@@ -1,22 +1,19 @@
-const text = document.querySelectorAll('.text')
 class ActionPanel {
-    reduce(type, value) {
-        text.forEach(item => {
-            item.style.setProperty(type, value);
+    constructor(panel){
+        this.panel = panel;
+        this.panel.addEventListener('click', ({target: {dataset: {type, value}}}) => {
+            this.reduce(type, value)
         })
+    }
+    reduce(type, value) {
+        document.querySelector('#main').style.setProperty(type, value);
     }
 }
 
-const action = new ActionPanel();
-document.addEventListener('click', (e) => {
-    const actionType = e.target.dataset.type;
-    const actionValue = e.target.dataset.value;
-    action.reduce(actionType, actionValue)
-    
-})
+const action = new ActionPanel(document.getElementById('header'));
 
 class Dropdown {
-    showModal(modalSelector) {
+    toggleModal(modalSelector) {
         let modal = document.getElementById(modalSelector);
         modal.classList.toggle('hidden');
     }
@@ -32,7 +29,7 @@ const dropdown = new Dropdown;
 
 document.addEventListener('click', (e) => {
     if(e.target.dataset.modal){
-        dropdown.showModal(e.target.dataset.modal)
+        dropdown.toggleModal(e.target.dataset.modal)
     } else if(e.target.dataset.close){
          dropdown.closeModal(e.target.dataset.close)
     }
@@ -101,7 +98,7 @@ class InputModal extends Dropdown{
         const cancel = document.querySelector('[data-click="cancel"]')
         const confirm = document.querySelector('[data-click="confirm"]')
         this.signOut.addEventListener('click', () => {
-            this.showModal('sign-out-modal')
+            this.toggleModal('sign-out-modal')
         })
         cancel.addEventListener('click', () => {
             this.closeModal('sign-out-modal')
