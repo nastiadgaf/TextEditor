@@ -392,6 +392,33 @@
   padding-left: 2%;
 }
 
+.log-out-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.list-btn {
+  height: 40px;
+  width: 50%;
+}
+
+.list__action-buttons {
+  width: 100%;
+}
+
+.list-modal-content {
+  padding: 20px;
+}
+
+.list-form__input {
+  margin-top: 5px;
+}
+
 body {
   padding: 0;
   margin: 0;

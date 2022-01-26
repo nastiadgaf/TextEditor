@@ -11,79 +11,143 @@
 
 <body>
     <header class="header" id="header">
-        <div class="log-in-panel">
+        <div class="log-in-panel hidden">
             <ul class="header__buttons">
                 <li class="buttons__item" style="background-image: url(images/save-icon.png);"></li>
                 <li class="buttons__item" style="background-image: url(images/table-icon.png);">
-                    <div id="table-modal" class="modal">
+                    <div id="table-modal" class="modal hidden">
                         <div class="modal-content table-modal-content">
                             <h2 class="heading table-modal__heading">Create table</h2>
                             <form class="table-form" id="table-form">
                                 <div class="table-form__input-block">
                                     <label for="count-tr" class="input-block__label">Count TR</label>
-                                    <input type="text" class="input table-form__input" id="count-tr" placeholder="type here...">
+                                    <input type="text" class="input table-form__input" id="count-tr"
+                                        placeholder="type here...">
                                 </div>
                                 <div class="table-form__input-block">
                                     <label for="count-td" class="input-block__label">Count TD</label>
-                                    <input type="text" class="input table-form__input" id="count-td" placeholder="type here...">
+                                    <input type="text" class="input table-form__input" id="count-td"
+                                        placeholder="type here...">
                                 </div>
                                 <div class="table-form__input-block">
                                     <label for="width-td" class="input-block__label">Width of TD</label>
-                                    <input type="text" class="input table-form__input" id="width-td" placeholder="type here...">
+                                    <input type="text" class="input table-form__input" id="width-td"
+                                        placeholder="type here...">
                                 </div>
                                 <div class="table-form__input-block">
                                     <label for="height-td" class="input-block__label">Height of TD</label>
-                                    <input type="text" class="input table-form__input" id="height-td" placeholder="type here...">
-                               
+                                    <input type="text" class="input table-form__input" id="height-td"
+                                        placeholder="type here...">
+
                                 </div>
                                 <div class="table-form__input-block">
-                                     <label for="border-width" class="input-block__label">Width of border</label>
-                                     <input type="text" class="input table-form__input" id="border-width" placeholder="type here...">
+                                    <label for="border-width" class="input-block__label">Width of border</label>
+                                    <input type="text" class="input table-form__input" id="border-width"
+                                        placeholder="type here...">
                                 </div>
                                 <div class="table-form__input-block table-form__input-block-select">
                                     <label for="select_border" class="input-block__label">Style of border:</label>
-                                <select name="select_border" class="input" id="select_border">
-                                    <option value="choose" selected>choose style</option>
-                                    <option value="dotted">dotted</option>
-                                    <option value="dashed">dashed</option>
-                                    <option value="solid">solid</option>
-                                    <option value="double">double</option>
-                                    <option value="groove">groove</option>
-                                    <option value="ridge">ridge</option>
-                                    <option value="inset">inset</option>
-                                    <option value="outset">outset</option>
-                                </select>
+                                    <select name="select_border" class="input" id="select_border">
+                                        <option value="choose" selected>choose style</option>
+                                        <option value="dotted">dotted</option>
+                                        <option value="dashed">dashed</option>
+                                        <option value="solid">solid</option>
+                                        <option value="double">double</option>
+                                        <option value="groove">groove</option>
+                                        <option value="ridge">ridge</option>
+                                        <option value="inset">inset</option>
+                                        <option value="outset">outset</option>
+                                    </select>
                                 </div>
                                 <div class="table-form__input-block table-form__input-block-select">
-                                     <label for="select_border-color" class="input-block__label">Color of border:</label>
-                                <select name="select_border-color" class="input" id="select_border-color">
-                                    <option value="choose" selected>choose color</option>
-                                    <option value="black">black</option>
-                                    <option value="red">red</option>
-                                    <option value="green">green</option>
-                                    <option value="blue">blue</option>
-                                    <option value="yellow">yellow</option>
-                                    <option value="white">white</option>
-                                    <option value="grey">grey</option>
-                                    <option value="pink">pink</option>
-                                </select>
+                                    <label for="select_border-color" class="input-block__label">Color of border:</label>
+                                    <select name="select_border-color" class="input" id="select_border-color">
+                                        <option value="choose" selected>choose color</option>
+                                        <option value="black">black</option>
+                                        <option value="red">red</option>
+                                        <option value="green">green</option>
+                                        <option value="blue">blue</option>
+                                        <option value="yellow">yellow</option>
+                                        <option value="white">white</option>
+                                        <option value="grey">grey</option>
+                                        <option value="pink">pink</option>
+                                    </select>
                                 </div>
-                                
-                               <div class="action__buttons action__buttons_width">
-                                <button class="action__buttons_btn reset table-btn">Reset</button>
-                                <button class="action__buttons_btn create table-btn">Create table</button>
+
+                                <div class="action__buttons action__buttons_width">
+                                    <button class="action__buttons_btn reset table-btn">Reset</button>
+                                    <button class="action__buttons_btn create table-btn">Create table</button>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </li>
-                <li class="buttons__item" style="background-image: url(images/ol-icon.png);"></li>
-                <li class="buttons__item" style="background-image: url(images/ul-icon.png);"></li>
+                <li class="buttons__item" style="background-image: url(images/ol-icon.png);">
+                    <div id="ol-modal" class="modal hidden">
+                        <div class="modal-content list-modal-content">
+                            <h2 class="heading list-modal__heading">Create Ol</h2>
+                            <form class="list-form" id="ol-form">
+                                <div class="list-form__input-block">
+                                    <label for="li-item" class="list-block__label">Count li item:</label>
+                                    <input type="text" class="input list-form__input" id="li-item"
+                                        placeholder="type here...">
+                                </div>
+
+                                <div class="list-form__input-block list-form__input-block-select">
+                                    <label for="ol-select" class="list-block__label">Type mark of list:</label>
+                                    <select name="ol-select" class="input list-form__input" id="ol-select">
+                                        <option value="choose" selected>choose Ol type mark:</option>
+                                        <option value="num">1</option>
+                                        <option value="num2">|</option>
+                                        <option value="num3">i</option>
+                                        <option value="num4">A</option>
+                                        <option value="num5">a</option>
+                                    </select>
+                                </div>
+
+                                <div class="action__buttons list__action-buttons">
+                                    <button class="action__buttons_btn reset list-btn">Reset</button>
+                                    <button class="action__buttons_btn create list-btn">Create list</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="buttons__item" style="background-image: url(images/ul-icon.png);">
+                    <div id="ul-modal" class="modal hidden">
+                        <div class="modal-content list-modal-content">
+                            <h2 class="heading list-modal__heading">Create Ul</h2>
+                            <form class="list-form" id="ul-form">
+                                <div class="list-form__input-block">
+                                    <label for="li-item" class="list-block__label">Count Ul item:</label>
+                                    <input type="text" class="input list-form__input" id="li-item"
+                                        placeholder="type here...">
+                                </div>
+
+                                <div class="list-form__input-block list-form__input-block-select">
+                                    <label for="ul-select" class="list-block__label">Type mark of list:</label>
+                                    <select name="ul-select" class="input list-form__input" id="ul-select">
+                                        <option value="choose" selected>choose Ul type mark:</option>
+                                        <option value="circle">circle</option>
+                                        <option value="disc">disc</option>
+                                        <option value="square">square</option>
+                                    </select>
+                                </div>
+
+                                <div class="action__buttons list__action-buttons">
+                                    <button class="action__buttons_btn reset list-btn">Reset</button>
+                                    <button class="action__buttons_btn create list-btn">Create list</button>
+                                </div>
+                            </form>
+
+                        </div>
+                </li>
             </ul>
         </div>
 
-        <div class="log-out-panel hidden">
+        <div class="log-out-panel">
             <div class="header__buttons " data-click="">
                 <button class="buttons__item" data-click="edit"
                     style="background-image: url(images/code-icon.png);"></button>
@@ -358,7 +422,8 @@
     <div id="sign-out-modal" class="modal hidden">
         <div class="modal-content modal-content__sign-out">
             <div class=" action__buttons">
-                <button class="sign-out__button action__buttons_btn cancel" data-close="sign-out" data-click="cancel">Cancel</button>
+                <button class="sign-out__button action__buttons_btn cancel" data-close="sign-out"
+                    data-click="cancel">Cancel</button>
                 <button class="sign-out__button action__buttons_btn confirm" data-click="confirm">Sign out</button>
             </div>
 
