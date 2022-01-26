@@ -1,47 +1,66 @@
 class ActionPanel {
-    constructor(panel){
+    constructor(panel, main){
         this.panel = panel;
-        this.panel.addEventListener('click', ({target: {dataset: {type, value}}}) => {
-            this.reduce(type, value)
+        this.main = main;
+        this.panel.addEventListener('click', ({target: {dataset: {type, value}}}) => { 
+            if(this.main.style.getPropertyValue(type) === value) {
+                this.removeStyle(type, value);
+            } else {
+                this.addStyle(type, value);
+            }
         })
     }
-    reduce(type, value) {
-        document.querySelector('#main').style.setProperty(type, value);
+    addStyle = (type, value) => {
+       // document.querySelector(`[data-value="${value}]"`).classList.add('active')
+        this.main.style.setProperty(type, value);
+    }
+    removeStyle = (type) => {
+        this.main.style.removeProperty(type);
+        //document.querySelector(`[data-value="${value}]"`).classList.remove('active')
     }
 }
 
-const action = new ActionPanel(document.getElementById('header'));
+const action = new ActionPanel(document.getElementById('header'), document.getElementById('main'));
 
 class Dropdown {
-    toggleModal(modalSelector) {
+    constructor(listId){
+        this.list = document.getElementById(listId);
+        this.toggleModalBtn = document.querySelector(`[data-modal="${listId}"]`);
+        this.closeModalBtn = document.querySelector(`[data-close="${listId}"]`);
+        
+        this.toggleModalBtn.addEventListener('click', ({target: {dataset: {relatedModal}}}) =>{
+            this.toggleModal(relatedModal);
+        })
+
+        this.closeModalBtn.addEventListener('click', ({target: {dataset: {relatedModal}}}) =>{
+            this.closeModal(relatedModal);
+        })
+    }
+    toggleModal = (modalSelector) => {
         let modal = document.getElementById(modalSelector);
         modal.classList.toggle('hidden');
     }
 
-    closeModal(modalSelector) {
+    closeModal = (modalSelector) => {
         let modal = document.getElementById(modalSelector);
         modal.classList.add('hidden');
     }
 
 }
 
-const dropdown = new Dropdown;
+const dropdownInput = new Dropdown('sign-in');
+const dropdownBgColor = new Dropdown('bg-modal');
+const dropdownSelectFont = new Dropdown('select_font');
 
-document.addEventListener('click', (e) => {
-    if(e.target.dataset.modal){
-        dropdown.toggleModal(e.target.dataset.modal)
-    } else if(e.target.dataset.close){
-         dropdown.closeModal(e.target.dataset.close)
-    }
-   
-})
+const dropdownSelectSize = new Dropdown('select_size');
+const dropdownColor = new Dropdown('color-modal');
 
 class InputModal extends Dropdown{
+        #login = 'admin';
+        #password = 'password';
+
     constructor(){
         super();
-        this.login = 'admin';
-        this.password = 'password';
-
         this.loginInput = document.querySelector('[data-input="login"]')
         this.passwordInput = document.querySelector('[data-input="password"]')
         this.signInButton = document.querySelector('[data-input="button"]')
@@ -49,6 +68,13 @@ class InputModal extends Dropdown{
 
         this.signOut = document.querySelector('[data-modal="sign-out"]')
         this.signIn = document.querySelector('[data-modal="sign-modal"]')
+
+        this.cancel = document.querySelector('[data-click="cancel"]')
+        this.confirm = document.querySelector('[data-click="confirm"]')
+
+        this.signInButton.addEventListener('click', () => {
+            this.validateSignInInputs
+        })
     }
        
     createMessage = (message, text) => {
@@ -59,24 +85,22 @@ class InputModal extends Dropdown{
     }
 
 
-    addInvalidClassToInputs(){
+    addInvalidClassToInputs = () => {
         this.loginInput.classList.add('invalid');
         this.passwordInput.classList.add('invalid');
     }
 
-    removeInvalidClassToInputs(){
+    removeInvalidClassToInputs = () => {
         this.loginInput.classList.remove('invalid')
         this.passwordInput.classList.remove('invalid')
     }
 
-    validateSingInInputs() {
-        
-        this.signInButton.addEventListener('click', () => {
+    validateSignInInputs = () => {
             if (this.loginInput.value === '' || this.passwordInput.value === '') {
                 this.addInvalidClassToInputs();
                 this.createMessage(this.messageEmpty, 'Value is empty')
                 this.messageIncorrect.remove()
-            } else if (this.loginInput.value !== this.login || this.passwordInput.value !== this.password) {
+            } else if (this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) {
                 this.addInvalidClassToInputs();
                 this.createMessage(this.messageIncorrect, 'Check your login or password')
                 this.messageEmpty.remove();
@@ -90,27 +114,24 @@ class InputModal extends Dropdown{
                 this.signIn.classList.add('hidden')
                 this.removeInvalidClassToInputs();
             }
-        })
 
     }
 
-    logOut() {
-        const cancel = document.querySelector('[data-click="cancel"]')
-        const confirm = document.querySelector('[data-click="confirm"]')
-        this.signOut.addEventListener('click', () => {
-            this.toggleModal('sign-out-modal')
-        })
-        cancel.addEventListener('click', () => {
-            this.closeModal('sign-out-modal')
-        })
-        confirm.addEventListener('click', () => {
-            this.closeModal('sign-out-modal')
-            this.signOut.classList.add('hidden')
-            this.signIn.classList.remove('hidden')
-        })
-    }
+    // logOut = () => {
+    //     const cancel = document.querySelector('[data-click="cancel"]')
+    //     const confirm = document.querySelector('[data-click="confirm"]')
+    //     this.signOut.addEventListener('click', () => {
+    //         this.toggleModal('sign-out-modal')
+    //     })
+    //     cancel.addEventListener('click', () => {
+    //         this.closeModal('sign-out-modal')
+    //     })
+    //     confirm.addEventListener('click', () => {
+    //         this.closeModal('sign-out-modal')
+    //         this.signOut.classList.add('hidden')
+    //         this.signIn.classList.remove('hidden')
+    //     })
+    // }
 }
 
 const input = new InputModal();
-input.validateSingInInputs();
-input.logOut();

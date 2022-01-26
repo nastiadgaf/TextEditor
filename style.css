@@ -244,7 +244,7 @@
   padding: 10px;
 }
 
-.sign__input {
+.input {
   width: 100%;
   height: 35px;
   margin-bottom: 15px;
@@ -256,7 +256,7 @@
   cursor: pointer;
 }
 
-.sign__input:hover {
+.input:hover {
   -webkit-box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
           box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
@@ -276,7 +276,7 @@
   background-color: #757575;
 }
 
-.sign-out__buttons {
+.action__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -294,12 +294,20 @@
 
 .sign-out__button {
   padding: 15px 45px;
+}
+
+.action__buttons_btn {
+  width: 49%;
   cursor: pointer;
   font-size: 18px;
   margin: 5px;
   border: none;
   border-radius: 10px;
   color: white;
+}
+
+.action__buttons {
+  width: 98%;
 }
 
 .modal-content__sign-out {
@@ -317,6 +325,71 @@
 
 .invalid {
   border: 1.6px solid red;
+}
+
+.table-modal-content {
+  width: 100%;
+  max-width: 900px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.table-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input-block__label {
+  margin-bottom: 5px;
+}
+
+.table-form__input-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 47%;
+  margin: 10px;
+}
+
+.table-form__input-block-select {
+  width: 22.4%;
+}
+
+.table-btn {
+  height: 40px;
+}
+
+.reset {
+  background-color: #ce0d0d;
+}
+
+.create {
+  background-color: #158f26;
+}
+
+.table-modal__heading {
+  padding-left: 2%;
 }
 
 body {
