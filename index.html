@@ -197,7 +197,7 @@
 
             <ul class="header__buttons">
                 <li>
-                    <button class="buttons__item button-pos" data-modal="select_size" data-related-modal="select_size"
+                    <button class="buttons__item button-pos" data-modal="select_size" data-close="select_size" data-related-modal="select_size"
                         style="background-image: url(images/text-icon.png);">
                     </button>
                     <ul class="buttons__select select_size hidden" id="select_size">
@@ -221,7 +221,7 @@
                 </li>
 
                 <li>
-                    <button class="buttons__item button-pos" data-modal="select_font" data-related-modal="select_font"
+                    <button class="buttons__item button-pos" data-modal="select_font" data-close="select_font" data-related-modal="select_font"
                         style="background-image: url(images/text_size-icon.png);">
                     </button>
                     <ul class="buttons__select select_font hidden" id="select_font">
@@ -253,7 +253,7 @@
 
             <ul class="header__buttons">
                 <li>
-                    <button class="buttons__item" data-modal="sign-modal" data-related-modal="sign-modal"
+                    <button class="buttons__item" data-modal="sign-in" data-related-modal="sign-in"
                         style="background-image: url(images/lock-icon.png);">
                     </button>
                 </li>
@@ -403,9 +403,9 @@
 
 
 
-    <div id="sign-modal" class="modal hidden">
+    <div id="sign-in" class="modal ">
         <div class="modal-content">
-            <span class="close" data-close="sign-modal">&times;</span>
+            <span class="close" data-close="sign-in">&times;</span>
             <h2 class="heading sign-modal__heading ">Sign in</h2>
             <div class="sign__inputs">
                 <div class="inputs">
