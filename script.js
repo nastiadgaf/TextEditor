@@ -12,13 +12,13 @@ class ActionPanel {
 	}
 
 	addStyle = (type, value) => {
-		document.querySelector(`[data-value="${value}"]`).classList.add('active');
+		//document.querySelector(`[data-value="${value}"]`).classList.add('active');
 		this.main.style.setProperty(type, value);
 	}
 
 	removeStyle = (type, value) => {
 		this.main.style.removeProperty(type);
-		document.querySelector(`[data-value="${value}"]`).classList.remove('active');
+		//document.querySelector(`[data-value="${value}"]`).classList.remove('active');
 	}
 }
 
@@ -27,10 +27,8 @@ const action = new ActionPanel(document.getElementById('header'), document.getEl
 class Dropdown {
 	constructor(listId) {
 		this.list = document.getElementById(listId);
-		console.log(listId);
 		this.toggleModalBtn = document.querySelector(`[data-modal="${listId}"]`);
 		this.closeModalBtn = document.querySelector(`[data-close="${listId}"]`);
-
 		this.toggleModalBtn.addEventListener('click', ({ target: { dataset: { relatedModal } } }) => {
 			this.toggleModal(relatedModal);
 		});
@@ -50,13 +48,18 @@ class Dropdown {
 	}
 
 }
+// const dropdownSelectFont = new Dropdown('select-font');
+// const dropdownSelectSize = new Dropdown('select-size');
 
-const dropdownInput = new Dropdown('sign-in');
 const dropdownBgColor = new Dropdown('bg-modal');
-const dropdownSelectFont = new Dropdown('select_font');
-
-const dropdownSelectSize = new Dropdown('select_size');
+const dropdownLogIn = new Dropdown('log-in')
 const dropdownColor = new Dropdown('color-modal');
+const dropdownTable = new Dropdown('table-modal');
+const dropdownOl = new Dropdown('ol-modal');
+const dropdownUl = new Dropdown('ul-modal');
+
+// const dropdownInnerBgImgModal = new Dropdown('inner-bg-img-modal');
+// const dropdownInnerBgColorModal = new Dropdown('inner-bg-color-modal');
 
 class InputModal extends Dropdown {
 	#login = 'admin';
@@ -102,17 +105,17 @@ class InputModal extends Dropdown {
 		if (this.loginInput.value === '' || this.passwordInput.value === '') {
 			this.addInvalidClassToInputs();
 			this.createMessage(this.messageEmpty, 'Value is empty')
-			this.messageIncorrect.remove()
+			//this.messageIncorrect.remove()
 		} else if (this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) {
 			this.addInvalidClassToInputs();
 			this.createMessage(this.messageIncorrect, 'Check your login or password')
-			this.messageEmpty.remove();
+			//this.messageEmpty.remove();
 		} else {
 			this.loginInput.value = ''
 			this.passwordInput.value = ''
 			//this.messageEmpty.remove();
 			//this.messageIncorrect.remove();
-			this.closeModal('sign-modal')
+			this.closeModal('sign-in')
 			this.signOut.classList.remove('hidden')
 			this.signIn.classList.add('hidden')
 			this.removeInvalidClassToInputs();
@@ -120,21 +123,22 @@ class InputModal extends Dropdown {
 
 	}
 
-	// logOut = () => {
-	//     const cancel = document.querySelector('[data-click="cancel"]')
-	//     const confirm = document.querySelector('[data-click="confirm"]')
-	//     this.signOut.addEventListener('click', () => {
-	//         this.toggleModal('sign-out-modal')
-	//     })
-	//     cancel.addEventListener('click', () => {
-	//         this.closeModal('sign-out-modal')
-	//     })
-	//     confirm.addEventListener('click', () => {
-	//         this.closeModal('sign-out-modal')
-	//         this.signOut.classList.add('hidden')
-	//         this.signIn.classList.remove('hidden')
-	//     })
-	// }
+	logOut = () => {
+	    const cancel = document.querySelector('[data-click="cancel"]')
+	    const confirm = document.querySelector('[data-click="confirm"]')
+	    this.signOut.addEventListener('click', () => {
+	        this.toggleModal('sign-out-modal')
+	    })
+	    cancel.addEventListener('click', () => {
+	        this.closeModal('sign-out-modal')
+	    })
+	    confirm.addEventListener('click', () => {
+	        this.closeModal('sign-out-modal')
+	        this.signOut.classList.add('hidden')
+	        this.signIn.classList.remove('hidden')
+	    })
+	}
 }
 
 const input = new InputModal('sign-in');
+const closeInput = new InputModal('sign-out')

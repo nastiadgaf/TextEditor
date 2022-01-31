@@ -11,10 +11,10 @@
 
 <body>
     <header class="header" id="header">
-        <div class="log-in-panel hidden">
+        <div class="log-in-panel hidden" id="log-in">
             <ul class="header__buttons">
-                <li class="buttons__item" style="background-image: url(images/save-icon.png);"></li>
-                <li class="buttons__item" style="background-image: url(images/table-icon.png);">
+                <li class="buttons__item" style="background-image: url(images/save-icon.png);" data-related-modal="log-in" data-close="log-in"></li>
+                <li class="buttons__item" style="background-image: url(images/table-icon.png);" data-modal="table-modal" data-related-modal="table-modal">
                     <div id="table-modal" class="modal hidden">
                         <div class="modal-content table-modal-content">
                             <h2 class="heading table-modal__heading">Create table</h2>
@@ -75,15 +75,15 @@
                                 </div>
 
                                 <div class="action__buttons action__buttons_width">
-                                    <button class="action__buttons_btn reset table-btn">Reset</button>
-                                    <button class="action__buttons_btn create table-btn">Create table</button>
+                                    <button class="action__buttons_btn reset table-btn" data-close="table-modal" data-related-modal="table-modal">Reset</button>
+                                    <button class="action__buttons_btn create table-btn" >Create table</button>
                                 </div>
                             </form>
 
                         </div>
                     </div>
                 </li>
-                <li class="buttons__item" style="background-image: url(images/ol-icon.png);">
+                <li class="buttons__item" style="background-image: url(images/ol-icon.png);" data-modal="ol-modal" data-related-modal="ol-modal">
                     <div id="ol-modal" class="modal hidden">
                         <div class="modal-content list-modal-content">
                             <h2 class="heading list-modal__heading">Create Ol</h2>
@@ -107,7 +107,7 @@
                                 </div>
 
                                 <div class="action__buttons list__action-buttons">
-                                    <button class="action__buttons_btn reset list-btn">Reset</button>
+                                    <button class="action__buttons_btn reset list-btn" data-close="ol-modal" data-related-modal="ol-modal">Reset</button>
                                     <button class="action__buttons_btn create list-btn">Create list</button>
                                 </div>
                             </form>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="buttons__item" style="background-image: url(images/ul-icon.png);">
+                <li class="buttons__item" style="background-image: url(images/ul-icon.png);" data-modal="ul-modal" data-related-modal="ul-modal">
                     <div id="ul-modal" class="modal hidden">
                         <div class="modal-content list-modal-content">
                             <h2 class="heading list-modal__heading">Create Ul</h2>
@@ -137,7 +137,7 @@
                                 </div>
 
                                 <div class="action__buttons list__action-buttons">
-                                    <button class="action__buttons_btn reset list-btn">Reset</button>
+                                    <button class="action__buttons_btn reset list-btn" data-related-modal="ul-modal" data-close="ul-modal">Reset</button>
                                     <button class="action__buttons_btn create list-btn">Create list</button>
                                 </div>
                             </form>
@@ -147,9 +147,9 @@
             </ul>
         </div>
 
-        <div class="log-out-panel">
+        <div class="log-out-panel" id="log-out">
             <div class="header__buttons " data-click="">
-                <button class="buttons__item" data-click="edit"
+                <button class="buttons__item" data-modal="log-in" data-related-modal="log-in"
                     style="background-image: url(images/code-icon.png);"></button>
             </div>
 
@@ -197,10 +197,10 @@
 
             <ul class="header__buttons">
                 <li>
-                    <button class="buttons__item button-pos" data-modal="select_size" data-close="select_size" data-related-modal="select_size"
+                    <button class="buttons__item button-pos" data-modal="select-size"  data-related-modal="select-size"
                         style="background-image: url(images/text-icon.png);">
                     </button>
-                    <ul class="buttons__select select_size hidden" id="select_size">
+                    <ul class="buttons__select select_size hidden" id="select-size">
                         <li class="select__item twelve" style="font-size: 12px;" data-type="font-size"
                             data-value="12px">12px</li>
                         <li class="select__item fourteen" style="font-size: 14px;" data-type="font-size"
@@ -221,22 +221,22 @@
                 </li>
 
                 <li>
-                    <button class="buttons__item button-pos" data-modal="select_font" data-close="select_font" data-related-modal="select_font"
+                    <button class="buttons__item button-pos" data-modal="select-font" data-related-modal="select-font"
                         style="background-image: url(images/text_size-icon.png);">
                     </button>
-                    <ul class="buttons__select select_font hidden" id="select_font">
+                    <ul class="buttons__select select_font hidden" id="select-font" data-close="select-font" data-related-modal="select-font">
                         <li class="select__item" style="font-family: 'Arial';" data-type="font-family"
-                            data-value="Arial">Arial</li>
+                            data-value="Arial" >Arial</li>
                         <li class="select__item" style="font-family: 'Georgia';" data-type="font-family"
-                            data-value="Georgia">Georgia</li>
+                            data-value="Georgia" >Georgia</li>
                         <li class="select__item" style="font-family: 'Impact';" data-type="font-family"
-                            data-value="Impact">Impact</li>
+                            data-value="Impact" >Impact</li>
                         <li class="select__item" style="font-family: 'Tahoma';" data-type="font-family"
-                            data-value="Tahoma">Tahoma</li>
+                            data-value="Tahoma" >Tahoma</li>
                         <li class="select__item" style="font-family: 'Times New Roman';" data-type="font-family"
-                            data-value="TimesNewRoman">Times New Roman</li>
+                            data-value="TimesNewRoman" >Times New Roman</li>
                         <li class="select__item" style="font-family: 'Verdana';" data-type="font-family"
-                            data-value="Verdana">Verdana</li>
+                            data-value="Verdana" >Verdana</li>
                     </ul>
                 </li>
                 <li>
@@ -268,7 +268,7 @@
 
             <div id="color-modal" class="modal hidden">
                 <div class="modal-content">
-                    <span class="close" data-close="color-modal">&times;</span>
+                    <span class="close" data-close="color-modal" data-related-modal="color-modal">&times;</span>
                     <h2 class="heading modal__heading">Choose text color!</h2>
                     <ul class="color__buttons list-horizontal">
                         <li><button class="color__btn" style="background-color: #0ba99a;" data-type="color"
@@ -319,14 +319,14 @@
 
             <div id="bg-modal" class="modal hidden">
                 <div class="modal-content">
-                    <span class="close" data-close="bg-modal">&times;</span>
+                    <span class="close" data-close="bg-modal" data-related-modal="bg-modal">&times;</span>
                     <h2 class="heading modal__heading">Choose background color or image!</h2>
                     <ul class="modal__list">
-                        <li class="list__item" data-change="bg-colors">Colors</li>
-                        <li class="list__item" data-change="bg-images">Images</li>
+                        <li class="list__item" data-change="bg-colors" data-modal="inner-bg-color-modal" data-related-modal="inner-bg-color-modal">Colors</li>
+                        <li class="list__item" data-change="bg-images" data-modal="inner-bg-img-modal" data-related-modal="inner-bg-img-modal">Images</li>
                         <li class="list__item" data-change="bg-files">Files</li>
                     </ul>
-                    <ul class="color__buttons color__buttons-bg list-horizontal">
+                    <ul class="color__buttons color__buttons-bg list-horizontal" id="inner-bg-color-modal">
                         <li><button class="color__btn" style="background-color: #0ba99a;" data-type="background-color"
                                 data-value="#0ba99a" data-place="all"></button></li>
                         <li><button class="color__btn" style="background-color: #089082;" data-type="background-color"
@@ -371,7 +371,7 @@
                                 data-value="#000000" data-place="all"></button></li>
                     </ul>
 
-                    <ul class="images__buttons hidden list-horizontal">
+                    <ul class="images__buttons hidden list-horizontal" id="inner-bg-img-modal">
                         <li><button class="images__btn" style="background-image: url(images/bridge.jpg);"
                                 data-type="background-image" data-value="url(images/bridge.jpg)"></button></li>
                         <li><button class="images__btn" style="background-image: url(images/field.jpg);"
@@ -403,9 +403,9 @@
 
 
 
-    <div id="sign-in" class="modal ">
+    <div id="sign-in" class="modal hidden">
         <div class="modal-content">
-            <span class="close" data-close="sign-in">&times;</span>
+            <span class="close" data-close="sign-in" data-related-modal="sign-in">&times;</span>
             <h2 class="heading sign-modal__heading ">Sign in</h2>
             <div class="sign__inputs">
                 <div class="inputs">
@@ -419,11 +419,10 @@
         </div>
     </div>
 
-    <div id="sign-out-modal" class="modal hidden">
+    <div id="sign-out" class="modal hidden">
         <div class="modal-content modal-content__sign-out">
             <div class=" action__buttons">
-                <button class="sign-out__button action__buttons_btn cancel" data-close="sign-out"
-                    data-click="cancel">Cancel</button>
+                <button class="sign-out__button action__buttons_btn cancel" data-close="sign-out" data-related-modal="sign-out">Cancel</button>
                 <button class="sign-out__button action__buttons_btn confirm" data-click="confirm">Sign out</button>
             </div>
 
