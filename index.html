@@ -90,7 +90,7 @@
                             <form class="list-form" id="ol-form">
                                 <div class="list-form__input-block">
                                     <label for="li-item" class="list-block__label">Count li item:</label>
-                                    <input type="text" class="input list-form__input" id="li-item"
+                                    <input type="text" class="input list-form__input" id="ol-li-item"
                                         placeholder="type here...">
                                 </div>
 
@@ -98,17 +98,17 @@
                                     <label for="ol-select" class="list-block__label">Type mark of list:</label>
                                     <select name="ol-select" class="input list-form__input" id="ol-select">
                                         <option value="choose" selected>choose Ol type mark:</option>
-                                        <option value="num">1</option>
-                                        <option value="num2">|</option>
-                                        <option value="num3">i</option>
-                                        <option value="num4">A</option>
-                                        <option value="num5">a</option>
+                                        <option value="decimal" data-type="list-style-type" data-value="decimal">1</option>
+                                        <option value="upper-roman" data-type="list-style-type" data-value="upper-roman">|</option>
+                                        <option value="lower-roman" data-type="list-style-type" data-value="lower-roman">i</option>
+                                        <option value="upper-alpha" data-type="list-style-type" data-value="upper-alpha">A</option>
+                                        <option value="lower-alpha" data-type="list-style-type" data-value="lower-alpha">a</option>
                                     </select>
                                 </div>
 
                                 <div class="action__buttons list__action-buttons">
                                     <button class="action__buttons_btn reset list-btn" data-close="ol-modal" data-related-modal="ol-modal">Reset</button>
-                                    <button class="action__buttons_btn create list-btn">Create list</button>
+                                    <button class="action__buttons_btn create list-btn" data-action="create-ol-list">Create list</button>
                                 </div>
                             </form>
 
@@ -122,7 +122,7 @@
                             <form class="list-form" id="ul-form">
                                 <div class="list-form__input-block">
                                     <label for="li-item" class="list-block__label">Count Ul item:</label>
-                                    <input type="text" class="input list-form__input" id="li-item"
+                                    <input type="text" class="input list-form__input" id="ul-li-item"
                                         placeholder="type here...">
                                 </div>
 
@@ -138,7 +138,7 @@
 
                                 <div class="action__buttons list__action-buttons">
                                     <button class="action__buttons_btn reset list-btn" data-related-modal="ul-modal" data-close="ul-modal">Reset</button>
-                                    <button class="action__buttons_btn create list-btn">Create list</button>
+                                    <button class="action__buttons_btn create list-btn" data-action="create-ul-list">Create list</button>
                                 </div>
                             </form>
 
