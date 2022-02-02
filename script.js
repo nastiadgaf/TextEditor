@@ -2,14 +2,7 @@ class ActionPanel {
 	constructor(panel, main) {
 		this.panel = panel;
 		this.main = main;
-		this.panel.addEventListener('click', ({
-			target: {
-				dataset: {
-					type,
-					value
-				}
-			}
-		}) => {
+		this.panel.addEventListener('click', ({target: {dataset: {type,value}}}) => {
 			if (this.main.style.getPropertyValue(type) === value) {
 				this.removeStyle(type, value);
 			} else {
@@ -19,13 +12,16 @@ class ActionPanel {
 	}
 
 	addStyle = (type, value) => {
-		//document.querySelector(`[data-value="${value}"]`).classList.add('active');
+		document.querySelectorAll('.buttons__item').forEach(btn => {
+			btn.classList.remove('active');
+		})
+		document.querySelector(`[data-value="${value}"]`).classList.add('active');
 		this.main.style.setProperty(type, value);
 	}
 
 	removeStyle = (type, value) => {
 		this.main.style.removeProperty(type);
-		//document.querySelector(`[data-value="${value}"]`).classList.remove('active');
+		document.querySelector(`[data-value="${value}"]`).classList.remove('active');
 	}
 }
 
@@ -36,23 +32,11 @@ class Dropdown {
 		this.list = document.getElementById(listId);
 		this.toggleModalBtn = document.querySelector(`[data-modal="${listId}"]`);
 		this.closeModalBtn = document.querySelector(`[data-close="${listId}"]`);
-		this.toggleModalBtn.addEventListener('click', ({
-			target: {
-				dataset: {
-					relatedModal
-				}
-			}
-		}) => {
+		this.toggleModalBtn.addEventListener('click', ({target: {dataset: {relatedModal}}}) => {
 			this.toggleModal(relatedModal);
 		});
 
-		this.closeModalBtn.addEventListener('click', ({
-			target: {
-				dataset: {
-					relatedModal
-				}
-			}
-		}) => {
+		this.closeModalBtn.addEventListener('click', ({target: {dataset: {relatedModal}}}) => {
 			this.closeModal(relatedModal);
 		});
 	}
@@ -68,7 +52,7 @@ class Dropdown {
 
 
 }
-// const dropdownSelectFont = new Dropdown('select-font');
+ //const dropdownSelectFont = new Dropdown('select-font');
 // const dropdownSelectSize = new Dropdown('select-size');
 const dropdownLogIn = new Dropdown('log-in');
 const dropdownBgColor = new Dropdown('bg-modal');
@@ -103,15 +87,15 @@ class InputModal extends Dropdown {
 		})
 	}
 
-	addMessage = (text) => {
-		if (!this.isMessage) {
-			this.message = document.createElement('p');
-			this.inputBlock.append(this.message)
-			this.message.classList.add('error')
-		}
+	// addMessage = (text) => {
+	// 	if (!this.isMessage) {
+	// 		this.message = document.createElement('p');
+	// 		this.inputBlock.append(this.message)
+	// 		this.message.classList.add('error')
+	// 	}
 		
-		this.message.textContent = text;
-	}
+	// 	this.message.textContent = text;
+	// }
 
 
 	addInvalidClassToInputs = () => {
@@ -127,11 +111,11 @@ class InputModal extends Dropdown {
 	validateSignInInputs = () => {
 		if (this.loginInput.value === '' || this.passwordInput.value === '') {
 			this.addInvalidClassToInputs();
-			this.addMessage('Value is empty')
+			//this.addMessage('Value is empty')
 			//this.messageIncorrect.remove()
 		} else if (this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) {
 			this.addInvalidClassToInputs();
-			this.addMessage('Check your login or password')
+			//this.addMessage('Check your login or password')
 			//this.messageEmpty.remove();
 		} else {
 			this.loginInput.value = ''
