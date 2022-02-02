@@ -2,7 +2,14 @@ class ActionPanel {
 	constructor(panel, main) {
 		this.panel = panel;
 		this.main = main;
-		this.panel.addEventListener('click', ({ target: { dataset: { type, value } } }) => {
+		this.panel.addEventListener('click', ({
+			target: {
+				dataset: {
+					type,
+					value
+				}
+			}
+		}) => {
 			if (this.main.style.getPropertyValue(type) === value) {
 				this.removeStyle(type, value);
 			} else {
@@ -29,11 +36,23 @@ class Dropdown {
 		this.list = document.getElementById(listId);
 		this.toggleModalBtn = document.querySelector(`[data-modal="${listId}"]`);
 		this.closeModalBtn = document.querySelector(`[data-close="${listId}"]`);
-		this.toggleModalBtn.addEventListener('click', ({ target: { dataset: { relatedModal } } }) => {
+		this.toggleModalBtn.addEventListener('click', ({
+			target: {
+				dataset: {
+					relatedModal
+				}
+			}
+		}) => {
 			this.toggleModal(relatedModal);
 		});
 
-		this.closeModalBtn.addEventListener('click', ({ target: { dataset: { relatedModal } } }) => {
+		this.closeModalBtn.addEventListener('click', ({
+			target: {
+				dataset: {
+					relatedModal
+				}
+			}
+		}) => {
 			this.closeModal(relatedModal);
 		});
 	}
@@ -69,23 +88,29 @@ class InputModal extends Dropdown {
 		this.passwordInput = document.querySelector('[data-input="password"]')
 		this.signInButton = document.querySelector('[data-input="button"]')
 		this.inputBlock = document.querySelector('.inputs');
+		this.switchPanelBtn = document.querySelector('#switch-panel');
+		this.switchPanelBtn.disabled = true;
 
 		this.signOut = document.querySelector('[data-modal="sign-out"]')
 		this.signIn = document.querySelector('[data-modal="sign-in"]')
 
 		this.cancel = document.querySelector('[data-click="cancel"]')
 		this.confirm = document.querySelector('[data-click="confirm"]')
-
+		
+		this.isMessage = false;
 		this.signInButton.addEventListener('click', () => {
 			this.validateSignInInputs();
 		})
 	}
 
-	createMessage = (message, text) => {
-		message = document.createElement('p');
-		message.textContent = text;
-		message.classList.add('error')
-		this.inputBlock.append(message)
+	addMessage = (text) => {
+		if (!this.isMessage) {
+			this.message = document.createElement('p');
+			this.inputBlock.append(this.message)
+			this.message.classList.add('error')
+		}
+		
+		this.message.textContent = text;
 	}
 
 
@@ -102,11 +127,11 @@ class InputModal extends Dropdown {
 	validateSignInInputs = () => {
 		if (this.loginInput.value === '' || this.passwordInput.value === '') {
 			this.addInvalidClassToInputs();
-			this.createMessage(this.messageEmpty, 'Value is empty')
+			this.addMessage('Value is empty')
 			//this.messageIncorrect.remove()
 		} else if (this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) {
 			this.addInvalidClassToInputs();
-			this.createMessage(this.messageIncorrect, 'Check your login or password')
+			this.addMessage('Check your login or password')
 			//this.messageEmpty.remove();
 		} else {
 			this.loginInput.value = ''
@@ -117,32 +142,35 @@ class InputModal extends Dropdown {
 			this.signOut.classList.remove('hidden')
 			this.signIn.classList.add('hidden')
 			this.removeInvalidClassToInputs();
+			this.switchPanelBtn.disabled = false;
+			
 		}
 
 	}
 
 	logOut = () => {
-	    const cancel = document.querySelector('[data-click="cancel"]')
-	    const confirm = document.querySelector('[data-click="confirm"]')
-	    this.signOut.addEventListener('click', () => {
-	        this.toggleModal('sign-out-modal')
-	    })
-	    cancel.addEventListener('click', () => {
-	        this.closeModal('sign-out-modal')
-	    })
-	    confirm.addEventListener('click', () => {
-	        this.closeModal('sign-out-modal')
-	        this.signOut.classList.add('hidden')
-	        this.signIn.classList.remove('hidden')
-	    })
+		const cancel = document.querySelector('[data-click="cancel"]')
+		const confirm = document.querySelector('[data-click="confirm"]')
+		this.signOut.addEventListener('click', () => {
+			this.toggleModal('sign-out-modal')
+		})
+		cancel.addEventListener('click', () => {
+			this.closeModal('sign-out-modal')
+		})
+		confirm.addEventListener('click', () => {
+			this.closeModal('sign-out-modal')
+			this.signOut.classList.add('hidden')
+			this.signIn.classList.remove('hidden')
+			this.switchPanelBtn.disabled = true;
+		})
 	}
 }
 
 const input = new InputModal('sign-in');
 const closeInput = new InputModal('sign-out')
 
-class TableModal extends Dropdown{
-	constructor (listId) {
+class TableModal extends Dropdown {
+	constructor(listId) {
 		super(listId);
 		this.main = document.querySelector('#main');
 		this.createTableBtn = document.querySelector('[data-action="create-table"]');
@@ -160,12 +188,12 @@ class TableModal extends Dropdown{
 		})
 	}
 
-	createTable(){
+	createTable = () => {
 		const newTable = document.createElement('table');
 
-		for(let i = 0; i < this.countTr.value; i++){
+		for (let i = 0; i < this.countTr.value; i++) {
 			let tr = document.createElement('tr');
-			for(let j = 0; j < this.countTd.value; j++) {
+			for (let j = 0; j < this.countTd.value; j++) {
 				let td = document.createElement('td');
 				td.textContent = 'td'
 				td.style.width = `${this.widthTd.value}px`;
@@ -177,13 +205,13 @@ class TableModal extends Dropdown{
 		}
 		main.append(newTable);
 	}
-	
+
 }
 
 const table = new TableModal('table-modal');
 
-class List extends Dropdown{
-	constructor(listId){
+class List extends Dropdown {
+	constructor(listId) {
 		super(listId);
 		this.olLiCount = document.querySelector('#ol-li-item');
 		this.olStyleType = document.querySelector('#ol-select');
@@ -204,13 +232,13 @@ class List extends Dropdown{
 		})
 	}
 
-	createList = (elem, styleType, count ) => {
+	createList = (elem, styleType, count) => {
 		const newList = document.createElement(elem);
 		const liType = styleType;
-		for(let i = 1; i <= count; i++){
+		for (let i = 1; i <= count; i++) {
 			const newLi = document.createElement('li');
 			newLi.textContent = `item ${i}`;
-			newLi.style.setProperty('list-style-type', liType )
+			newLi.style.setProperty('list-style-type', liType)
 			newList.append(newLi);
 		}
 		this.main.append(newList);
