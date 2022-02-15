@@ -1,4 +1,3 @@
-
 class InputModal extends Dropdown {
 	#login = 'admin';
 	#password = 'password';
@@ -10,7 +9,7 @@ class InputModal extends Dropdown {
 		this.signInButton = document.querySelector('[data-input="button"]')
 		this.inputBlock = document.querySelector('.inputs');
 		this.switchPanelBtn = document.querySelector('#switch-panel');
-		this.switchPanelBtn.disabled = true;
+		//this.switchPanelBtn.disabled = true;
 
 		this.signOut = document.querySelector('[data-modal="sign-out"]')
 		this.signIn = document.querySelector('[data-modal="sign-in"]')
@@ -18,22 +17,21 @@ class InputModal extends Dropdown {
 		this.cancel = document.querySelector('[data-click="cancel"]')
 		this.confirm = document.querySelector('[data-click="confirm"]')
 		
-		//this.isMessage = false;
+		this.isMessage = false;
 		this.signInButton.addEventListener('click', () => {
 			this.validateSignInInputs();
 		})
 	}
 
-	// addMessage = (text) => {
-	// 	if (!this.isMessage) {
-	// 		this.message = document.createElement('p');
-	// 		this.inputBlock.append(this.message)
-	// 		this.message.classList.add('error')
-	// 	}
-		
-	// 	this.message.textContent = text;
-	// }
+	get formStatus () {
+		let status = null;
 
+		if(this.loginInput.value === '' || this.passwordInput.value === '') status = 'empty';
+		if(this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) status = 'incorrect';
+		if(this.loginInput.value === this.#login && this.passwordInput.value === this.#password) status = 'correct';
+
+		return status;
+	}
 
 	addInvalidClassToInputs = () => {
 		this.loginInput.classList.add('invalid');
@@ -46,25 +44,26 @@ class InputModal extends Dropdown {
 	}
 
 	validateSignInInputs = () => {
-		if (this.loginInput.value === '' || this.passwordInput.value === '') {
-			this.addInvalidClassToInputs();
-			//this.addMessage('Value is empty')
-			//this.messageIncorrect.remove()
-		} else if (this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) {
-			this.addInvalidClassToInputs();
-			//this.addMessage('Check your login or password')
-			//this.messageEmpty.remove();
-		} else {
-			this.loginInput.value = ''
-			this.passwordInput.value = ''
-			//this.messageEmpty.remove();
-			//this.messageIncorrect.remove();
-			this.closeModal('sign-in')
-			this.signOut.classList.remove('hidden')
-			this.signIn.classList.add('hidden')
-			this.removeInvalidClassToInputs();
-			this.switchPanelBtn.disabled = false;
-			
+		const { formStatus } = this;
+
+		switch(formStatus) {
+			case 'empty':
+				this.addInvalidClassToInputs();
+				break;
+			case 'incorrect':
+				this.addInvalidClassToInputs();
+				break;
+			case 'correct':
+				this.loginInput.value = ''
+				this.passwordInput.value = ''
+				//this.messageEmpty.remove();
+				//this.messageIncorrect.remove();
+				this.closeModal('sign-in')
+				this.signOut.classList.remove('hidden')
+				this.signIn.classList.add('hidden')
+				this.removeInvalidClassToInputs();
+				//this.switchPanelBtn.disabled = false;
+				break;
 		}
 
 	}
@@ -82,7 +81,7 @@ class InputModal extends Dropdown {
 			this.closeModal('sign-out-modal')
 			this.signOut.classList.add('hidden')
 			this.signIn.classList.remove('hidden')
-			this.switchPanelBtn.disabled = true;
+			//this.switchPanelBtn.disabled = true;
 		})
 	}
 }
