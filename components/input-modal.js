@@ -1,3 +1,5 @@
+
+
 class InputModal extends Dropdown {
 	#login = 'admin';
 	#password = 'password';
@@ -17,6 +19,7 @@ class InputModal extends Dropdown {
 		this.cancel = document.querySelector('[data-click="cancel"]')
 		this.confirm = document.querySelector('[data-click="confirm"]')
 		
+		this.validationMessage = new Message({parent: this.inputBlock})
 		this.isMessage = false;
 		this.signInButton.addEventListener('click', () => {
 			this.validateSignInInputs();
@@ -44,14 +47,16 @@ class InputModal extends Dropdown {
 	}
 
 	validateSignInInputs = () => {
-		const { formStatus } = this;
+		const { formStatus, validationMessage } = this;
 
 		switch(formStatus) {
 			case 'empty':
 				this.addInvalidClassToInputs();
+				validationMessage.add('Value is empty')
 				break;
 			case 'incorrect':
 				this.addInvalidClassToInputs();
+				validationMessage.add('Value is incorrect')
 				break;
 			case 'correct':
 				this.loginInput.value = ''
@@ -84,6 +89,31 @@ class InputModal extends Dropdown {
 			//this.switchPanelBtn.disabled = true;
 		})
 	}
+}
+
+class Message {
+    constructor({parent}) {
+        this.elem = null;
+        this.parent = parent;
+    }
+
+    add(messageText) {
+        const { elem } = this;
+        if(!elem) this.create();
+        elem.textContent = messageText;
+    }
+
+    create() {
+        const elem = document.createElement('p');
+        elem.classList.add('error');
+        this.parent.append(this.elem);
+        this.elem = elem;
+    }
+
+    remove() {
+        this.elem.remove();
+        this.elem = null;
+    }
 }
 
 const input = new InputModal('sign-in');
