@@ -37,12 +37,11 @@
 
 .modal-content {
   background-color: white;
-  width: 50%;
   margin: 5% auto;
   padding: 10px;
   color: black;
   border-radius: 10px;
-  width: 550px;
+  width: 500px;
 }
 
 .color__buttons {

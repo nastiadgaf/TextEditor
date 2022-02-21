@@ -13,7 +13,7 @@
     <header class="header" id="header">
         <div class="log-in-panel hidden" id="log-in">
             <ul class="header__buttons">
-                <li class="buttons__item" style="background-image: url(images/save-icon.png);" data-related-modal="log-in" data-close="log-in"></li>
+                <li class="buttons__item" style="background-image: url(images/save-icon.png);" data-modal="log-out" data-related-modal="log-out" data-close="log-out"></li>
                 <li class="buttons__item" style="background-image: url(images/table-icon.png);" data-modal="table-modal" data-related-modal="table-modal">
                     <div id="table-modal" class="modal hidden">
                         <div class="modal-content table-modal-content">
@@ -154,7 +154,7 @@
             </div>
 
 
-            <ul class="header__buttons ">
+            <ul class="header__buttons" data-action="change-style-panel">
                 <li>
                     <button class="buttons__item" data-type="font-weight" data-value="bold" data-place="text"
                         style="background-image: url(images/bold-icon.png);">
@@ -177,7 +177,7 @@
                 </li>
             </ul>
 
-            <ul class="header__buttons">
+            <ul class="header__buttons" data-action="change-style-panel">
                 <li>
                     <button class="buttons__item" data-type="text-align" data-value="left"
                         style="background-image: url(images/left-icon.png);">
@@ -200,7 +200,7 @@
                     <button class="buttons__item button-pos" data-modal="select-size"  data-related-modal="select-size"
                         style="background-image: url(images/text-icon.png);">
                     </button>
-                    <ul class="buttons__select select_size hidden" id="select-size">
+                    <ul class="buttons__select select_size hidden" id="select-size" data-action="change-style-panel">
                         <li class="select__item twelve" style="font-size: 12px;" data-type="font-size"
                             data-value="12px">12px</li>
                         <li class="select__item fourteen" style="font-size: 14px;" data-type="font-size"
@@ -224,7 +224,7 @@
                     <button class="buttons__item button-pos" data-modal="select-font" data-related-modal="select-font"
                         style="background-image: url(images/text_size-icon.png);">
                     </button>
-                    <ul class="buttons__select select_font hidden" id="select-font" data-close="select-font" data-related-modal="select-font">
+                    <ul class="buttons__select select_font hidden" id="select-font" data-close="select-font" data-related-modal="select-font" data-action="change-style-panel">
                         <li class="select__item" style="font-family: 'Arial';" data-type="font-family"
                             data-value="Arial" >Arial</li>
                         <li class="select__item" style="font-family: 'Georgia';" data-type="font-family"
@@ -270,7 +270,7 @@
                 <div class="modal-content">
                     <span class="close" data-close="color-modal" data-related-modal="color-modal">&times;</span>
                     <h2 class="heading modal__heading">Choose text color!</h2>
-                    <ul class="color__buttons list-horizontal">
+                    <ul class="color__buttons list-horizontal" data-action="change-style-panel">
                         <li><button class="color__btn" style="background-color: #0ba99a;" data-type="color"
                                 data-value="#0ba99a" data-place="text"></button></li>
                         <li><button class="color__btn" style="background-color: #089082;" data-type="color"
@@ -326,7 +326,7 @@
                         <li class="list__item" data-change="bg-images" data-modal="inner-bg-img-modal" data-related-modal="inner-bg-img-modal">Images</li>
                         <li class="list__item" data-change="bg-files">Files</li>
                     </ul>
-                    <ul class="color__buttons color__buttons-bg list-horizontal" id="inner-bg-color-modal">
+                    <ul class="color__buttons color__buttons-bg list-horizontal" id="inner-bg-color-modal" data-action="change-style-panel">
                         <li><button class="color__btn" style="background-color: #0ba99a;" data-type="background-color"
                                 data-value="#0ba99a" data-place="all"></button></li>
                         <li><button class="color__btn" style="background-color: #089082;" data-type="background-color"
@@ -371,7 +371,7 @@
                                 data-value="#000000" data-place="all"></button></li>
                     </ul>
 
-                    <ul class="images__buttons hidden list-horizontal" id="inner-bg-img-modal">
+                    <ul class="images__buttons hidden list-horizontal" id="inner-bg-img-modal" data-action="change-style-panel">
                         <li><button class="images__btn" style="background-image: url(images/bridge.jpg);"
                                 data-type="background-image" data-value="url(images/bridge.jpg)"></button></li>
                         <li><button class="images__btn" style="background-image: url(images/field.jpg);"

@@ -2,13 +2,12 @@ class ActionPanel {
 	constructor(panel, main) {
 		this.panel = panel;
 		this.main = main;
-		this.panel.addEventListener('click', ({target: {dataset: {type,value}}}) => {
-			if (this.main.style.getPropertyValue(type) === value) {
-				this.removeStyle(type, value);
-			} else {
-				this.addStyle(type, value);
-			}
+		this.panel.forEach(item => {
+			item.addEventListener('click', ({target: {dataset: {type,value}}}) => {
+			this.main.style.getPropertyValue(type) === value ? this.removeStyle(type, value) : this.addStyle(type, value);
 		})
+		})
+		
 	}
 
 	addStyle = (type, value) => {
@@ -25,4 +24,4 @@ class ActionPanel {
 	}
 }
 
-const action = new ActionPanel(document.getElementById('header'), document.getElementById('main'));
+const action = new ActionPanel(document.querySelectorAll('[data-action="change-style-panel"]'), document.getElementById('main'));

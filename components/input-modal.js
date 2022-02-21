@@ -25,6 +25,26 @@ class InputModal extends Dropdown {
 			this.validateSignInInputs();
 		})
 	}
+	// createVariablesList = () => {
+	// 	this.variablesList = {
+	// 		loginInput: '[data-input="login"]',
+	// 		passwordInput: '[data-input="password"]',
+	// 		signInButton: '[data-input="button"]',
+	// 		inputBlock: '.inputs',
+	// 		switchPanelBtn: '#switch-panel',
+	// 		signOut: '[data-modal="sign-out"]',
+	// 		signIn: '[data-modal="sign-in"]',
+	// 		cancel: '[data-click="cancel"]',
+	// 		confirm: '[data-click="confirm"]'
+	// 	}
+		
+	// 	const {variablesList} = this;
+
+	// 	for(let key in variablesList){
+	// 		this.key = document.querySelector(variablesList[key]);
+	// 		console.log(this.key);
+	// 	}
+	// }
 
 	get formStatus () {
 		let status = null;
@@ -61,8 +81,6 @@ class InputModal extends Dropdown {
 			case 'correct':
 				this.loginInput.value = ''
 				this.passwordInput.value = ''
-				//this.messageEmpty.remove();
-				//this.messageIncorrect.remove();
 				this.closeModal('sign-in')
 				this.signOut.classList.remove('hidden')
 				this.signIn.classList.add('hidden')
@@ -104,9 +122,10 @@ class Message {
     }
 
     create() {
+		const { parent } = this;
         const elem = document.createElement('p');
         elem.classList.add('error');
-        this.parent.append(this.elem);
+        parent.append(elem);
         this.elem = elem;
     }
 
