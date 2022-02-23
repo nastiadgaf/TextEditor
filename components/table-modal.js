@@ -11,28 +11,32 @@ class TableModal extends Dropdown {
 		this.borderStyle = document.querySelector('#select_border');
 		this.borderColor = document.querySelector('#select_border-color');
 
+
 		this.createTableBtn.addEventListener('click', (e) => {
 			e.preventDefault();
 			this.createTable();
 		})
 	}
 
+
+
 	createTable = () => {
 		const newTable = document.createElement('table');
 
 		for (let i = 0; i < this.countTr.value; i++) {
-			let tr = document.createElement('tr');
+			let row = document.createElement('tr');
 			for (let j = 0; j < this.countTd.value; j++) {
-				let td = document.createElement('td');
-				td.textContent = 'td'
-				td.style.width = `${this.widthTd.value}px`;
-				td.style.height = `${this.heightTd.value}px`;
-				td.style.border = `${this.borderWidth.value}px ${this.borderStyle.value} ${this.borderColor.value}`;
-				tr.append(td)
+				let cell = document.createElement('td');
+				cell.textContent = 'td'
+				cell.style.width = `${this.widthTd.value}px`;
+				cell.style.height = `${this.heightTd.value}px`;
+				cell.style.border = `${this.borderWidth.value}px ${this.borderStyle.value} ${this.borderColor.value}`;
+				row.append(cell)
 			}
-			newTable.append(tr);
+			newTable.append(row);
 		}
 		main.append(newTable);
+		this.closeModal('table-modal')
 	}
 
 }

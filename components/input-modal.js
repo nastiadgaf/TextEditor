@@ -1,11 +1,10 @@
-
-
 class InputModal extends Dropdown {
 	#login = 'admin';
 	#password = 'password';
 
 	constructor(listId) {
 		super(listId);
+		//this.createVariablesList();
 		this.loginInput = document.querySelector('[data-input="login"]')
 		this.passwordInput = document.querySelector('[data-input="password"]')
 		this.signInButton = document.querySelector('[data-input="button"]')
@@ -13,13 +12,12 @@ class InputModal extends Dropdown {
 		this.switchPanelBtn = document.querySelector('#switch-panel');
 		//this.switchPanelBtn.disabled = true;
 
+		this.cancel = document.querySelector('[data-click="cancel"]')
+		this.confirm = document.querySelector('[data-click="confirm"]')
 		this.signOut = document.querySelector('[data-modal="sign-out"]')
 		this.signIn = document.querySelector('[data-modal="sign-in"]')
 
-		this.cancel = document.querySelector('[data-click="cancel"]')
-		this.confirm = document.querySelector('[data-click="confirm"]')
-		
-		this.validationMessage = new Message({parent: this.inputBlock})
+		this.validationMessage = new Message(document.querySelector('#main'))
 		this.isMessage = false;
 		this.signInButton.addEventListener('click', () => {
 			this.validateSignInInputs();
@@ -49,8 +47,9 @@ class InputModal extends Dropdown {
 	get formStatus () {
 		let status = null;
 
-		if(this.loginInput.value === '' || this.passwordInput.value === '') status = 'empty';
 		if(this.loginInput.value !== this.#login || this.passwordInput.value !== this.#password) status = 'incorrect';
+		if(this.loginInput.value === '' || this.passwordInput.value === '') status = 'empty';
+		
 		if(this.loginInput.value === this.#login && this.passwordInput.value === this.#password) status = 'correct';
 
 		return status;
@@ -86,21 +85,22 @@ class InputModal extends Dropdown {
 				this.signIn.classList.add('hidden')
 				this.removeInvalidClassToInputs();
 				//this.switchPanelBtn.disabled = false;
+				closeInput.logOut();
 				break;
 		}
 
 	}
 
 	logOut = () => {
-		const cancel = document.querySelector('[data-click="cancel"]')
-		const confirm = document.querySelector('[data-click="confirm"]')
+		
 		this.signOut.addEventListener('click', () => {
 			this.toggleModal('sign-out-modal')
 		})
-		cancel.addEventListener('click', () => {
+		this.cancel.addEventListener('click', () => {
 			this.closeModal('sign-out-modal')
 		})
-		confirm.addEventListener('click', () => {
+		this.confirm.addEventListener('click', () => {
+			alert(1)
 			this.closeModal('sign-out-modal')
 			this.signOut.classList.add('hidden')
 			this.signIn.classList.remove('hidden')
@@ -110,15 +110,15 @@ class InputModal extends Dropdown {
 }
 
 class Message {
-    constructor({parent}) {
+    constructor(parent) {
         this.elem = null;
         this.parent = parent;
     }
 
     add(messageText) {
-        const { elem } = this;
-        if(!elem) this.create();
-        elem.textContent = messageText;
+        
+        if(!this.elem) this.create();
+        this.elem.textContent = messageText;
     }
 
     create() {
@@ -136,4 +136,5 @@ class Message {
 }
 
 const input = new InputModal('sign-in');
+
 const closeInput = new InputModal('sign-out')

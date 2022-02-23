@@ -8,19 +8,21 @@ class List extends Dropdown {
 		this.createUlBtn = document.querySelector('[data-action="create-ul-list"]');
 		this.ulLiCount = document.querySelector('#ul-li-item');
 		this.ulStyleType = document.querySelector('#ul-select');
+
+		
+
+
 		this.createOlBtn.addEventListener('click', (e) => {
 			e.preventDefault();
-			this.createList('ol', this.olStyleType.value, this.olLiCount.value);
-			console.log(1)
+			this.createList('ol', this.olStyleType.value, this.olLiCount.value, 'ol-modal');
 		})
 		this.createUlBtn.addEventListener('click', (e) => {
 			e.preventDefault();
-			this.createList('ul', this.ulStyleType.value, this.ulLiCount.value);
-			console.log(2)
+			this.createList('ul', this.ulStyleType.value, this.ulLiCount.value, 'ul-modal');
 		})
 	}
 
-	createList = (elem, styleType, count) => {
+	createList = (elem, styleType, count, modal) => {
 		const newList = document.createElement(elem);
 		const liType = styleType;
 		for (let i = 1; i <= count; i++) {
@@ -30,8 +32,9 @@ class List extends Dropdown {
 			newList.append(newLi);
 		}
 		this.main.append(newList);
+		this.closeModal(modal)
 	}
 }
 
-const ol = new List('ol-modal');
-const ul = new List('ul-modal');
+const numberedList = new List('ol-modal');
+const markedList = new List('ul-modal');
