@@ -11,11 +11,16 @@ class ActionPanel {
 	}
 
 	addStyle = (type, value) => {
-		document.querySelectorAll('.buttons__item').forEach(btn => {
+		if(type == 'font-size' || type == 'font-family') {
+			this.main.style.setProperty(type, value);
+		} else {
+			document.querySelectorAll('.buttons__item').forEach(btn => {
 			btn.classList.remove('active');
 		})
 		document.querySelector(`[data-value="${value}"]`).classList.add('active');
 		this.main.style.setProperty(type, value);
+		}
+		
 	}
 
 	removeStyle = (type, value) => {

@@ -17,8 +17,12 @@ class InputModal extends Dropdown {
 		this.signOut = document.querySelector('[data-modal="sign-out"]')
 		this.signIn = document.querySelector('[data-modal="sign-in"]')
 
-		this.validationMessage = new Message(document.querySelector('#main'))
+		this.validationMessage = new Message(document.querySelector('.sign-in__inputs'))
 		this.isMessage = false;
+		
+	}
+
+	validate = () => {
 		this.signInButton.addEventListener('click', () => {
 			this.validateSignInInputs();
 		})
@@ -94,14 +98,13 @@ class InputModal extends Dropdown {
 	logOut = () => {
 		
 		this.signOut.addEventListener('click', () => {
-			this.toggleModal('sign-out-modal')
+			this.toggleModal('sign-out')
 		})
 		this.cancel.addEventListener('click', () => {
-			this.closeModal('sign-out-modal')
+			this.closeModal('sign-out')
 		})
 		this.confirm.addEventListener('click', () => {
-			alert(1)
-			this.closeModal('sign-out-modal')
+			this.closeModal('sign-out')
 			this.signOut.classList.add('hidden')
 			this.signIn.classList.remove('hidden')
 			//this.switchPanelBtn.disabled = true;
@@ -136,5 +139,6 @@ class Message {
 }
 
 const input = new InputModal('sign-in');
-
+input.validate();
 const closeInput = new InputModal('sign-out')
+closeInput.logOut();
