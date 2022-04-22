@@ -68,9 +68,11 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0;
+  left: 20px;
+  top: 50px;
 }
 
-.button-pos {
+.item_position {
   position: relative;
 }
 
@@ -85,15 +87,11 @@
 }
 
 .select_font {
-  left: 800px;
-  top: 90px;
   width: 200px;
 }
 
 .select_size {
-  top: 80px;
-  left: 900px;
   height: 250px;
-  width: 100px;
+  width: 130px;
 }
 /*# sourceMappingURL=header.css.map */
