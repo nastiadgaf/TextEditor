@@ -40,6 +40,29 @@ class Dropdown {
     let modal = document.getElementById(modalSelector);
     modal.classList.add('hidden');
   };
+
+  checkFields = (modalSelector) => {
+    const modal = document.querySelector(modalSelector);
+    modal.querySelectorAll('.input').forEach((input) => {
+      if (input.classList.contains('invalid')) {
+        console.log(input);
+        return false;
+      } else {
+        return true;
+      }
+    });
+  };
+
+  highlightNotFilledInputs = (modalSelector) => {
+    const modal = document.querySelector(modalSelector);
+    modal.querySelectorAll('.input').forEach((input) => {
+      if (input.value === '' || input.value === 'choose') {
+        input.classList.add('invalid');
+      } else {
+        input.classList.remove('invalid');
+      }
+    });
+  };
 }
 const dropdownSelectFont = new Dropdown('select-font');
 const dropdownSelectSize = new Dropdown('select-size');

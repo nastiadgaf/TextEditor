@@ -22,7 +22,6 @@ class TableModal extends Dropdown {
     this.resetTableBtn.addEventListener('click', (e) => {
       e.preventDefault();
       this.resetTable();
-      this.closeModal('table-modal');
     });
   }
 
@@ -31,24 +30,31 @@ class TableModal extends Dropdown {
     this.tableModal.querySelectorAll('input').forEach((input) => {
       input.value = '';
     });
-  };
-  createTable = () => {
-    const newTable = document.createElement('table');
-
-    for (let i = 0; i < this.countTr.value; i++) {
-      let row = document.createElement('tr');
-      for (let j = 0; j < this.countTd.value; j++) {
-        let cell = document.createElement('td');
-        cell.textContent = 'td';
-        cell.style.width = `${this.widthTd.value}px`;
-        cell.style.height = `${this.heightTd.value}px`;
-        cell.style.border = `${this.borderWidth.value}px ${this.borderStyle.value} ${this.borderColor.value}`;
-        row.append(cell);
-      }
-      newTable.append(row);
-    }
-    main.append(newTable);
     this.closeModal('table-modal');
+  };
+
+  createTable = () => {
+    if (!this.checkFields('#table-modal')) {
+      this.highlightNotFilledInputs('#table-modal');
+    } else {
+      const newTable = document.createElement('table');
+
+      for (let i = 0; i < this.countTr.value; i++) {
+        let row = document.createElement('tr');
+        for (let j = 0; j < this.countTd.value; j++) {
+          let cell = document.createElement('td');
+          cell.textContent = 'td';
+          cell.style.width = `${this.widthTd.value}px`;
+          cell.style.height = `${this.heightTd.value}px`;
+          cell.style.border = `${this.borderWidth.value}px ${this.borderStyle.value} ${this.borderColor.value}`;
+          row.append(cell);
+        }
+        newTable.append(row);
+      }
+      main.append(newTable);
+    }
+
+    // this.closeModal('table-modal');
   };
 }
 

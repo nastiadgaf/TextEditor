@@ -14,7 +14,6 @@ class InnerModals {
       .addEventListener('click', () => {
         this.changePanels(this.imageModal, this.colorModal);
       });
-    console.log(1);
   }
 
   changePanels = (panel, anotherPanel) => {
