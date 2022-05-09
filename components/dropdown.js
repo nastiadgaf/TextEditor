@@ -43,14 +43,13 @@ class Dropdown {
 
   checkFields = (modalSelector) => {
     const modal = document.querySelector(modalSelector);
-    modal.querySelectorAll('.input').forEach((input) => {
-      if (input.classList.contains('invalid')) {
-        console.log(input);
-        return false;
-      } else {
-        return true;
-      }
-    });
+    let checking = true;
+
+    for (const input of modal.querySelectorAll('.input')) {
+      if (input.value !== '' && input.value !== 'choose') continue;
+      checking = false;
+    }
+    return checking;
   };
 
   highlightNotFilledInputs = (modalSelector) => {

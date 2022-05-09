@@ -34,9 +34,8 @@ class TableModal extends Dropdown {
   };
 
   createTable = () => {
-    if (!this.checkFields('#table-modal')) {
-      this.highlightNotFilledInputs('#table-modal');
-    } else {
+    this.highlightNotFilledInputs('#table-modal');
+    if (this.checkFields('#table-modal')) {
       const newTable = document.createElement('table');
 
       for (let i = 0; i < this.countTr.value; i++) {

@@ -36,16 +36,18 @@ class List extends Dropdown {
 
   createList = (elem, styleType, count, modal) => {
     this.highlightNotFilledInputs(`#${modal}`);
-    const newList = document.createElement(elem);
-    const liType = styleType;
-    for (let i = 1; i <= count; i++) {
-      const newLi = document.createElement('li');
-      newLi.textContent = `item ${i}`;
-      newLi.style.setProperty('list-style-type', liType);
-      newList.append(newLi);
+    if (this.checkFields(`#${modal}`)) {
+      const newList = document.createElement(elem);
+      const liType = styleType;
+      for (let i = 1; i <= count; i++) {
+        const newLi = document.createElement('li');
+        newLi.textContent = `item ${i}`;
+        newLi.style.setProperty('list-style-type', liType);
+        newList.append(newLi);
+      }
+      this.main.append(newList);
+      this.closeModal(modal);
     }
-    this.main.append(newList);
-    this.closeModal(modal);
   };
 }
 

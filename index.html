@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Editor</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./general.css">
+    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./modal.css">
 </head>
 
 <body>
@@ -16,7 +19,8 @@
                 <li class="buttons__item" style="background-image: url(images/save-icon.png);" data-modal="log-out" data-related-modal="log-out" data-close="log-out"></li>
                 <li class="buttons__item" style="background-image: url(images/table-icon.png);" data-modal="table-modal" data-related-modal="table-modal">
                     <div id="table-modal" class="modal hidden">
-                        <div class="modal-content table-modal-content">
+                        <div class="modal-content table-modal-content modal-content__close-btn">
+                            <img src="./images/close.png" alt="close" class="close" data-close="table-modal" data-related-modal="table-modal">
                             <h2 class="heading table-modal__heading">Create table</h2>
                             <form class="table-form" id="table-form">
                                 <div class="table-form__input-block">
@@ -85,7 +89,8 @@
                 </li>
                 <li class="buttons__item" style="background-image: url(images/ol-icon.png);" data-modal="ol-modal" data-related-modal="ol-modal">
                     <div id="ol-modal" class="modal hidden">
-                        <div class="modal-content list-modal-content">
+                        <div class="modal-content list-modal-content modal-content__close-btn" >
+                            <img src="./images/close.png" alt="close" class="close" data-close="ol-modal" data-related-modal="ol-modal">
                             <h2 class="heading list-modal__heading">Create Ol</h2>
                             <form class="list-form" id="ol-form">
                                 <div class="list-form__input-block">
@@ -117,7 +122,8 @@
                 </li>
                 <li class="buttons__item" style="background-image: url(images/ul-icon.png);" data-modal="ul-modal" data-related-modal="ul-modal">
                     <div id="ul-modal" class="modal hidden">
-                        <div class="modal-content list-modal-content">
+                        <div class="modal-content list-modal-content modal-content__close-btn">
+                            <img src="./images/close.png" alt="close" class="close" data-close="ul-modal" data-related-modal="ul-modal">
                             <h2 class="heading list-modal__heading">Create Ul</h2>
                             <form class="list-form" id="ul-form">
                                 <div class="list-form__input-block">
@@ -149,7 +155,7 @@
 
         <div class="log-out-panel" id="log-out">
             <div class="header__buttons " data-click="">
-                <button id="switch-panel" class="buttons__item" data-modal="log-in" data-related-modal="log-in"
+                <button id="switch-panel "  class="buttons__item switch-panel_disabled" data-modal="log-in" data-related-modal="log-in"
                     style="background-image: url(images/code-icon.png);"></button>
             </div>
 
@@ -197,7 +203,7 @@
 
             <ul class="header__buttons">
                 <li class="item_position">
-                    <button class="buttons__item button-pos" data-modal="select-size"  data-related-modal="select-size"
+                    <button class="buttons__item button-pos" data-modal="select-size"  data-style-dropdown="dropdown-btn" data-related-modal="select-size"
                         style="background-image: url(images/text-icon.png);">
                     </button>
                     <ul class="buttons__select select_size hidden" id="select-size" data-action="change-style-panel" data-modal-panel="main">
@@ -221,7 +227,7 @@
                 </li>
 
                 <li class="item_position">
-                    <button class="buttons__item button-pos" data-modal="select-font" data-related-modal="select-font"
+                    <button class="buttons__item button-pos" data-modal="select-font" data-style-dropdown="dropdown-btn" data-related-modal="select-font"
                         style="background-image: url(images/text_size-icon.png);">
                     </button>
                     <ul class="buttons__select select_font hidden" id="select-font" data-modal-panel="main" data-close="select-font" data-related-modal="select-font" data-action="change-style-panel">
@@ -267,8 +273,9 @@
             </ul>
 
             <div id="color-modal" class="modal hidden" data-modal-panel="main">
-                <div class="modal-content">
-                    <span class="close" data-close="color-modal" data-related-modal="color-modal">&times;</span>
+                <div class="modal-content modal-content__close-btn">
+                    <img src="./images/close.png" alt="close" class="close" data-close="color-modal" data-related-modal="color-modal">
+            
                     <h2 class="heading modal__heading">Choose text color!</h2>
                     <ul class="color__buttons list-horizontal" data-action="change-style-panel">
                         <li><button class="color__btn" style="background-color: #0ba99a;" data-type="color"
@@ -318,8 +325,9 @@
             </div>
 
             <div id="bg-modal" class="modal hidden" data-modal-panel="main">
-                <div class="modal-content">
-                    <span class="close" data-close="bg-modal" data-related-modal="bg-modal">&times;</span>
+                <div class="modal-content modal-content__close-btn">
+                    <img src="./images/close.png" alt="close" class="close" data-close="bg-modal" data-related-modal="bg-modal">
+            
                     <h2 class="heading modal__heading">Choose background color or image!</h2>
                     <ul class="modal__list">
                         <li class="list__item" data-change="bg-colors" data-modal="inner-bg-color-modal" data-related-modal="inner-bg-color-modal">Colors</li>
@@ -405,16 +413,23 @@
 
 
     <div id="sign-in" class="modal hidden" data-modal-panel="main">
-        <form class="modal-content">
-            <span class="close" data-close="sign-in" data-related-modal="sign-in">&times;</span>
+        <form class="modal-content modal-content__close-btn">
+            <img src="./images/close.png" alt="close" class="close" data-close="sign-in" data-related-modal="sign-in">
             <h2 class="heading sign-modal__heading ">Sign in</h2>
             <div class="sign__inputs">
                 <div class="inputs  sign-in__inputs" >
-                    <input type="text" class="input sign__input " placeholder="Login here..." data-input="login">
-                    <input type="password" class="input sign__input" placeholder="Password here..." data-input="password">
-                </div>
+                    <div class="input-block">
+                        <input type="text"  class="input sign__input " placeholder="Login here..." data-input="login">
+                    <img src="./images/login.png" alt="login" class="input-icon">
+                    </div>
+                    <div class="input-block">
+                       <input type="password" class="input sign__input" placeholder="Password here..." data-input="password">
+                    <img src="./images/password.png" alt="png" class="input-icon">
+                 
+                    </div>
+                    </div>
 
-                <button type="button" class="sign-in__btn" data-input="button">Sign in</button>
+                <button type="button" class="sign-in__btn slide_down" data-input="button">Sign in</button>
             </div>
 
         </form>

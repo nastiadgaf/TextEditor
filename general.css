@@ -9,6 +9,8 @@ main {
   height: 100vh;
   margin-top: 0;
   background-size: cover;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .text {
@@ -26,11 +28,11 @@ li {
 }
 
 .active {
-  background-color: lightgrey;
+  background-color: lightgrey !important;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .bold {
@@ -60,4 +62,3 @@ li {
 .left {
   text-align: left;
 }
-/*# sourceMappingURL=general.css.map */
