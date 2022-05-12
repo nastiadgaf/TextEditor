@@ -3,61 +3,44 @@ class ActionPanel {
     this.panel = panel;
     this.main = main;
     this.dropdownButtons = dropdownButtons;
-    console.log(this.dropdownButtons);
     this.panel.forEach((item) => {
       item.addEventListener(
         'click',
         ({
           target: {
-            dataset: { type, value, relatedModal },
+            dataset: { type, value },
           },
         }) => {
           this.main.style.getPropertyValue(type) === value
             ? this.removeStyle(type, value)
             : this.addStyle(type, value);
 
-          this.dropdownButtons.forEach((btn) => {
-            if (btn.dataset.relatedModal === relatedModal) {
-              this.removeActiveClassToDropdownButtons(btn);
-            }
-          });
-          console.log(relatedModal);
+          this.getActiveStyle();
         }
       );
-    });
-
-    this.dropdownButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        this.addActiveClassToDropdownButtons(btn);
-      });
     });
   }
 
   addStyle = (type, value) => {
-    if (type == 'font-size' || type == 'font-family') {
-      this.main.style.setProperty(type, value);
-    } else {
-      document.querySelectorAll('.buttons__item').forEach((btn) => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`[data-value="${value}"]`).classList.add('active');
-      this.main.style.setProperty(type, value);
-    }
+    this.main.style.setProperty(type, value);
   };
 
-  removeStyle = (type, value) => {
+  removeStyle = (type) => {
     this.main.style.removeProperty(type);
-    document
-      .querySelector(`[data-value="${value}"]`)
-      .classList.remove('active');
   };
 
-  addActiveClassToDropdownButtons = (button) => {
-    button.classList.add('active');
-  };
+  getActiveStyle = () => {
+    document.querySelectorAll('[data-type]').forEach((btn) => {
+      btn.classList.remove('active-style');
+    });
 
-  removeActiveClassToDropdownButtons = (button) => {
-    button.classList.remove('active');
+    document.querySelectorAll('[data-type]').forEach((btn) => {
+      if (
+        btn.dataset.value === this.main.style.getPropertyValue(btn.dataset.type)
+      ) {
+        btn.classList.add('active-style');
+      }
+    });
   };
 }
 

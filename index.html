@@ -17,7 +17,7 @@
         <div class="log-in-panel hidden" id="log-in">
             <ul class="header__buttons">
                 <li class="buttons__item" style="background-image: url(images/save-icon.png);" data-modal="log-out" data-related-modal="log-out" data-close="log-out"></li>
-                <li class="buttons__item" style="background-image: url(images/table-icon.png);" data-modal="table-modal" data-related-modal="table-modal">
+                <li class="buttons__item" style="background-image: url(images/table-icon.png);" data-modal="table-modal" data-related-modal="table-modal"></li>
                     <div id="table-modal" class="modal hidden">
                         <div class="modal-content table-modal-content modal-content__close-btn">
                             <img src="./images/close.png" alt="close" class="close" data-close="table-modal" data-related-modal="table-modal">
@@ -52,7 +52,7 @@
                                 <div class="table-form__input-block table-form__input-block-select">
                                     <label for="select_border" class="input-block__label">Style of border:</label>
                                     <select name="select_border" class="input" id="select_border">
-                                        <option value="choose" selected>choose style</option>
+                                        <option value="choose" selected class="choose-option">choose style</option>
                                         <option value="dotted">dotted</option>
                                         <option value="dashed">dashed</option>
                                         <option value="solid">solid</option>
@@ -66,7 +66,7 @@
                                 <div class="table-form__input-block table-form__input-block-select">
                                     <label for="select_border-color" class="input-block__label">Color of border:</label>
                                     <select name="select_border-color" class="input" id="select_border-color">
-                                        <option value="choose" selected>choose color</option>
+                                        <option value="choose" selected class="choose-option">choose color</option>
                                         <option value="black">black</option>
                                         <option value="red">red</option>
                                         <option value="green">green</option>
@@ -79,15 +79,15 @@
                                 </div>
 
                                 <div class="action__buttons action__buttons_width">
-                                    <button class="action__buttons_btn reset table-btn" data-action="reset-table" data-close="table-modal" data-related-modal="table-modal">Reset</button>
+                                    <button class="action__buttons_btn reset table-btn" data-action="reset-table"  data-related-modal="table-modal">Reset</button>
                                     <button class="action__buttons_btn create table-btn" data-action="create-table" >Create table</button>
                                 </div>
                             </form>
 
                         </div>
                     </div>
-                </li>
-                <li class="buttons__item" style="background-image: url(images/ol-icon.png);" data-modal="ol-modal" data-related-modal="ol-modal">
+                
+                <li class="buttons__item" style="background-image: url(images/ol-icon.png);" data-modal="ol-modal" data-related-modal="ol-modal"></li>
                     <div id="ol-modal" class="modal hidden">
                         <div class="modal-content list-modal-content modal-content__close-btn" >
                             <img src="./images/close.png" alt="close" class="close" data-close="ol-modal" data-related-modal="ol-modal">
@@ -102,7 +102,7 @@
                                 <div class="list-form__input-block list-form__input-block-select">
                                     <label for="ol-select" class="list-block__label">Type mark of list:</label>
                                     <select name="ol-select" class="input list-form__input" id="ol-select">
-                                        <option value="choose" selected>choose Ol type mark:</option>
+                                        <option value="choose" selected class="choose-option">choose Ol type mark:</option>
                                         <option value="decimal" data-type="list-style-type" data-value="decimal">1</option>
                                         <option value="upper-roman" data-type="list-style-type" data-value="upper-roman">|</option>
                                         <option value="lower-roman" data-type="list-style-type" data-value="lower-roman">i</option>
@@ -112,15 +112,15 @@
                                 </div>
 
                                 <div class="action__buttons list__action-buttons">
-                                    <button class="action__buttons_btn reset list-btn" data-close="ol-modal" data-related-modal="ol-modal">Reset</button>
+                                    <button class="action__buttons_btn reset list-btn" id="reset-ol-list"  data-related-modal="ol-modal">Reset</button>
                                     <button class="action__buttons_btn create list-btn" data-action="create-ol-list">Create list</button>
                                 </div>
                             </form>
 
                         </div>
                     </div>
-                </li>
-                <li class="buttons__item" style="background-image: url(images/ul-icon.png);" data-modal="ul-modal" data-related-modal="ul-modal">
+                
+                <li class="buttons__item" style="background-image: url(images/ul-icon.png);" data-modal="ul-modal" data-related-modal="ul-modal"></li>
                     <div id="ul-modal" class="modal hidden">
                         <div class="modal-content list-modal-content modal-content__close-btn">
                             <img src="./images/close.png" alt="close" class="close" data-close="ul-modal" data-related-modal="ul-modal">
@@ -135,7 +135,7 @@
                                 <div class="list-form__input-block list-form__input-block-select">
                                     <label for="ul-select" class="list-block__label">Type mark of list:</label>
                                     <select name="ul-select" class="input list-form__input" id="ul-select">
-                                        <option value="choose" selected>choose Ul type mark:</option>
+                                        <option value="choose" selected class="choose-option">choose Ul type mark:</option>
                                         <option value="circle">circle</option>
                                         <option value="disc">disc</option>
                                         <option value="square">square</option>
@@ -143,13 +143,13 @@
                                 </div>
 
                                 <div class="action__buttons list__action-buttons">
-                                    <button class="action__buttons_btn reset list-btn" data-related-modal="ul-modal" data-close="ul-modal">Reset</button>
+                                    <button class="action__buttons_btn reset list-btn" id="reset-ul-list" data-related-modal="ul-modal">Reset</button>
                                     <button class="action__buttons_btn create list-btn" data-action="create-ul-list">Create list</button>
                                 </div>
                             </form>
 
                         </div>
-                </li>
+                
             </ul>
         </div>
 
@@ -332,9 +332,9 @@
                     <ul class="modal__list">
                         <li class="list__item" data-change="bg-colors" data-modal="inner-bg-color-modal" data-related-modal="inner-bg-color-modal">Colors</li>
                         <li class="list__item" data-change="bg-images" data-modal="inner-bg-img-modal" data-related-modal="inner-bg-img-modal">Images</li>
-                        <li class="list__item" data-change="bg-files">Files</li>
+                        <li class="list__item" data-change="bg-files" data-modal="inner-file-modal">Files</li>
                     </ul>
-                    <ul class="color__buttons color__buttons-bg list-horizontal" id="inner-bg-color-modal" data-action="change-style-panel">
+                    <ul class="color__buttons color__buttons-bg list-horizontal" id="inner-bg-color-modal" data-action="change-style-panel"  data-inner-modal>
                         <li><button class="color__btn" style="background-color: #0ba99a;" data-type="background"
                                 data-value="#0ba99a" data-place="all"></button></li>
                         <li><button class="color__btn" style="background-color: #089082;" data-type="background"
@@ -379,7 +379,7 @@
                                 data-value="#000000" data-place="all"></button></li>
                     </ul>
 
-                    <ul class="images__buttons hidden list-horizontal" id="inner-bg-img-modal" data-action="change-style-panel">
+                    <ul class="images__buttons hidden list-horizontal" id="inner-bg-img-modal" data-action="change-style-panel"  data-inner-modal>
                         <li><button class="images__btn" style="background-image: url(images/bridge.jpg);"
                                 data-type="background" data-value="url(images/bridge.jpg)"></button></li>
                         <li><button class="images__btn" style="background-image: url(images/field.jpg);"
@@ -399,6 +399,14 @@
                         <li><button class="images__btn" style="background-image: url(images/waterfall.jpg);"
                                 data-type="background" data-value="url(images/waterfall.jpg)"></button></li>
                     </ul>
+
+                    <div class="list-horizontal hidden" id="inner-file-modal" data-action="change-style-panel" data-inner-modal>
+                        <form class="form">
+                            <div class="file-upload-wrapper" data-text="Select your file!">
+                              <input name="file-upload-field" id="file-uploader" type="file" class="file-upload-field" value="">
+                            </div>
+                          </form>
+                    </div>
                 </div>
             </div>
         </div>

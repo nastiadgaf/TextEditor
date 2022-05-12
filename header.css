@@ -49,7 +49,7 @@
   justify-content: center;
   flex-direction: column;
   padding-top: 5px;
-  padding-left: 15px;
+  padding-left: 0px;
   left: 20px;
   top: 50px;
 }
@@ -61,6 +61,7 @@
 .select__item {
   line-height: 30px;
   cursor: pointer;
+  padding-left: 15px;
 }
 
 .select__item:hover {
@@ -78,4 +79,16 @@
 
 .switch-panel_disabled {
   background-color: #f1f1f1;
+}
+
+.green {
+  background-color: green;
+}
+
+.active-style {
+  background-color: rgb(216, 216, 216);
+}
+
+.buttons__item:active {
+  background-color: rgb(146, 146, 146);
 }

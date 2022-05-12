@@ -13,7 +13,6 @@ class TableModal extends Dropdown {
     this.borderWidth = document.querySelector('#border-width');
     this.borderStyle = document.querySelector('#select_border');
     this.borderColor = document.querySelector('#select_border-color');
-
     this.createTableBtn.addEventListener('click', (e) => {
       e.preventDefault();
       this.createTable();
@@ -30,7 +29,9 @@ class TableModal extends Dropdown {
     this.tableModal.querySelectorAll('input').forEach((input) => {
       input.value = '';
     });
-    this.closeModal('table-modal');
+    this.tableModal.querySelectorAll('select').forEach((select) => {
+      select.value = 'choose';
+    });
   };
 
   createTable = () => {
@@ -51,9 +52,8 @@ class TableModal extends Dropdown {
         newTable.append(row);
       }
       main.append(newTable);
+      this.closeModal('table-modal');
     }
-
-    // this.closeModal('table-modal');
   };
 }
 

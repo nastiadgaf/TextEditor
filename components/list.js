@@ -8,6 +8,17 @@ class List extends Dropdown {
     this.createUlBtn = document.querySelector('[data-action="create-ul-list"]');
     this.ulLiCount = document.querySelector('#ul-li-item');
     this.ulStyleType = document.querySelector('#ul-select');
+    this.resetOlBtn = document.querySelector('#reset-ol-list');
+    this.resetUlBtn = document.querySelector('#reset-ul-list');
+    console.log(this.resetOlBtn);
+    this.resetOlBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.resetList(document.querySelector('#ol-modal'));
+    });
+    this.resetUlBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.resetList(document.querySelector('#ul-modal'));
+    });
   }
 
   createOlList = () => {
@@ -32,6 +43,11 @@ class List extends Dropdown {
         'ul-modal'
       );
     });
+  };
+
+  resetList = (list) => {
+    list.querySelector('input').value = '';
+    list.querySelector('select').value = 'choose';
   };
 
   createList = (elem, styleType, count, modal) => {
