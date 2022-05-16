@@ -6,36 +6,52 @@ class ChangePanel {
     this.main = document.querySelector('#main');
   }
 
+  transformParagraphToTextArea = () => {
+    this.main.querySelectorAll('p').forEach((p) => {
+      let textArea = document.createElement('input');
+      textArea.setAttribute('type', 'text');
+      textArea.classList.add('text-area');
+      textArea.value = p.textContent;
+      p.remove();
+
+      this.main.querySelector('.text__block').append(textArea);
+      this.main.classList.add('main_edit');
+    });
+  };
+
+  transformTextAreaToParagraph = () => {
+    const textAreaArray = document.querySelectorAll('.text-area');
+
+    textAreaArray.forEach((area) => {
+      let editedText = document.createElement('p');
+      editedText.classList.add('text', 'main__text');
+      editedText.textContent = area.value;
+
+      this.changeVisiblePanel('.edit-panel', '.view-panel');
+      this.main.querySelector('.text__block').append(editedText);
+
+      area.remove();
+    });
+  };
+
+  changeVisiblePanel = (hiddenPanel, shownPanel) => {
+    document.querySelector(hiddenPanel).classList.remove('hidden');
+    document.querySelector(shownPanel).classList.add('hidden');
+  };
+
+  togglePanels = (panel) => {
+    document.querySelector(panel).classList.toggle('hidden');
+  };
   changePanel = () => {
     this.toggleModalBtn.addEventListener('click', () => {
-      document.querySelector('#log-out').classList.toggle('hidden');
-      document.querySelector('#log-in').classList.toggle('hidden');
+      this.togglePanels('#log-out');
+      this.togglePanels('#log-in');
+
       if (!this.checkPanelTextContent()) {
-        this.main.querySelectorAll('p').forEach((p) => {
-          let textArea = document.createElement('input');
-          textArea.setAttribute('type', 'text');
-          textArea.classList.add('text-area');
-          textArea.value = p.textContent;
-          p.remove();
-          this.main.querySelector('.text__block').append(textArea);
-          document.querySelector('.edit-panel').classList.remove('hidden');
-          document.querySelector('.view-panel').classList.add('hidden');
-          this.main.classList.add('main_edit');
-        });
+        this.transformParagraphToTextArea();
       } else {
-        const textAreaArray = document.querySelectorAll('.text-area');
-
-        textAreaArray.forEach((area) => {
-          let editedText = document.createElement('p');
-          editedText.classList.add('text', 'main__text');
-          editedText.textContent = area.value;
-
-          this.main.querySelector('.text__block').append(editedText);
-
-          area.remove();
-        });
-        document.querySelector('.view-panel').classList.remove('hidden');
-        document.querySelector('.edit-panel').classList.add('hidden');
+        this.transformTextAreaToParagraph();
+        this.changeVisiblePanel('.view-panel', '.edit-panel');
         this.main.classList.remove('main_edit');
       }
     });

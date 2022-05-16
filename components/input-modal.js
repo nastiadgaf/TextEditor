@@ -4,13 +4,14 @@ class InputModal extends Dropdown {
 
   constructor(listId) {
     super(listId);
-    //this.createVariablesList();
     this.loginInput = document.querySelector('[data-input="login"]');
     this.passwordInput = document.querySelector('[data-input="password"]');
+
     this.signInButton = document.querySelector('[data-input="button"]');
     this.inputBlock = document.querySelector('.inputs');
     this.switchPanelBtn = document.querySelector('#switch-panel');
-    //this.switchPanelBtn.disabled = true;
+    console.log(this.switchPanelBtn);
+    this.switchPanelBtn.disabled = true;
 
     this.cancel = document.querySelector('[data-click="cancel"]');
     this.confirm = document.querySelector('[data-click="confirm"]');
@@ -22,23 +23,6 @@ class InputModal extends Dropdown {
     );
     this.isMessage = false;
   }
-
-  onChangeValidation = (modalId) => {
-    const modal = document.querySelector(modalId);
-    modal.querySelectorAll('input').forEach((input) => {
-      input.addEventListener('input', () => {
-        this.formStatus === 'correct'
-          ? this.signInButton.classList.add('slide_down_active')
-          : this.signInButton.classList.remove('slide_down_active');
-      });
-    });
-  };
-
-  validate = () => {
-    this.signInButton.addEventListener('click', () => {
-      this.validateSignInInputs();
-    });
-  };
 
   get formStatus() {
     let status = null;
@@ -60,6 +44,23 @@ class InputModal extends Dropdown {
     return status;
   }
 
+  onChangeValidation = (modalId) => {
+    const modal = document.querySelector(modalId);
+    modal.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('input', () => {
+        this.formStatus === 'correct'
+          ? this.signInButton.classList.add('slide_down_active')
+          : this.signInButton.classList.remove('slide_down_active');
+      });
+    });
+  };
+
+  validate = () => {
+    this.signInButton.addEventListener('click', () => {
+      this.validateSignInInputs();
+    });
+  };
+
   addInvalidClassToInputs = () => {
     this.loginInput.classList.add('invalid');
     this.passwordInput.classList.add('invalid');
@@ -70,6 +71,15 @@ class InputModal extends Dropdown {
     this.passwordInput.classList.remove('invalid');
   };
 
+  toggleSignButtons = (hiddenButton, shownButton) => {
+    hiddenButton.classList.remove('hidden');
+    shownButton.classList.add('hidden');
+  };
+
+  removeSignInButtonActiveClass = () => {
+    this.signInButton.classList.remove('slide_down_active');
+  };
+
   validateSignInInputs = () => {
     const { formStatus, validationMessage } = this;
 
@@ -77,25 +87,23 @@ class InputModal extends Dropdown {
       case 'empty':
         this.addInvalidClassToInputs();
         validationMessage.add('Value is empty');
-        this.signInButton.classList.remove('slide_down_active');
+        this.removeSignInButtonActiveClass();
         break;
       case 'incorrect':
         this.addInvalidClassToInputs();
         validationMessage.add('Value is incorrect');
-        this.signInButton.classList.remove('slide_down_active');
+        this.removeSignInButtonActiveClass();
         break;
       case 'correct':
-        console.log(validationMessage);
         if (validationMessage.elem !== null) validationMessage.remove();
 
         this.signInButton.classList.add('slide_down_active');
         this.loginInput.value = '';
         this.passwordInput.value = '';
         this.closeModal('sign-in');
-        this.signOut.classList.remove('hidden');
-        this.signIn.classList.add('hidden');
+        this.toggleSignButtons(this.signOut, this.signIn);
         this.removeInvalidClassToInputs();
-        //this.switchPanelBtn.disabled = false;
+        this.switchPanelBtn.disabled = false;
         closeInput.logOut();
         break;
     }
@@ -105,15 +113,16 @@ class InputModal extends Dropdown {
     this.signOut.addEventListener('click', () => {
       this.toggleModal('sign-out');
     });
+
     this.cancel.addEventListener('click', () => {
       this.closeModal('sign-out');
     });
+
     this.confirm.addEventListener('click', () => {
       this.closeModal('sign-out');
-      this.signOut.classList.add('hidden');
-      this.signIn.classList.remove('hidden');
-      this.signInButton.classList.remove('slide_down_active');
-      //this.switchPanelBtn.disabled = true;
+      this.toggleSignButtons(this.signIn, this.signOut);
+      this.removeSignInButtonActiveClass();
+      this.switchPanelBtn.disabled = true;
     });
   };
 }

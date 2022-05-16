@@ -62,6 +62,27 @@ class Dropdown {
       }
     });
   };
+
+  resetModal = (modal) => {
+    this.modal = modal;
+    this.clearInputs('input', '', this.modal);
+    this.clearInputs('select', 'choose', this.modal);
+  };
+
+  clearInputs = (inputName, inputValue, modal) => {
+    modal.querySelectorAll(inputName).forEach((item) => {
+      item.classList.remove('invalid');
+      item.value = inputValue;
+    });
+  };
+
+  getElement = (element) => {
+    return document.querySelector(element);
+  };
+
+  appendElementToDOM = (elementSelector, element, block) => {
+    block.querySelector(elementSelector).append(element);
+  };
 }
 const dropdownSelectFont = new Dropdown('select-font');
 const dropdownSelectSize = new Dropdown('select-size');

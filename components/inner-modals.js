@@ -9,7 +9,6 @@ class InnerModals {
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      console.log(file);
       reader.addEventListener('load', (e) => {
         document.querySelector(
           '#main'
