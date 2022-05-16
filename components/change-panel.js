@@ -17,7 +17,10 @@ class ChangePanel {
           textArea.classList.add('text-area');
           textArea.value = p.textContent;
           p.remove();
-          this.main.append(textArea);
+          this.main.querySelector('.text__block').append(textArea);
+          document.querySelector('.edit-panel').classList.remove('hidden');
+          document.querySelector('.view-panel').classList.add('hidden');
+          this.main.classList.add('main_edit');
         });
       } else {
         const textAreaArray = document.querySelectorAll('.text-area');
@@ -26,10 +29,14 @@ class ChangePanel {
           let editedText = document.createElement('p');
           editedText.classList.add('text', 'main__text');
           editedText.textContent = area.value;
-          this.main.append(editedText);
-          console.log(editedText);
+
+          this.main.querySelector('.text__block').append(editedText);
+
           area.remove();
         });
+        document.querySelector('.view-panel').classList.remove('hidden');
+        document.querySelector('.edit-panel').classList.add('hidden');
+        this.main.classList.remove('main_edit');
       }
     });
   };

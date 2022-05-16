@@ -1,24 +1,25 @@
 class ActionPanel {
-  constructor(panel, dropdownButtons, main) {
-    this.panel = panel;
+  constructor(main) {
     this.main = main;
-    this.dropdownButtons = dropdownButtons;
-    this.panel.forEach((item) => {
-      item.addEventListener(
-        'click',
-        ({
-          target: {
-            dataset: { type, value },
-          },
-        }) => {
-          this.main.style.getPropertyValue(type) === value
-            ? this.removeStyle(type, value)
-            : this.addStyle(type, value);
+    this.styleElements = document.querySelectorAll('[data-type]');
+    document
+      .querySelectorAll('[data-action="change-style-panel"]')
+      .forEach((item) => {
+        item.addEventListener(
+          'click',
+          ({
+            target: {
+              dataset: { type, value },
+            },
+          }) => {
+            this.main.style.getPropertyValue(type) === value
+              ? this.removeStyle(type, value)
+              : this.addStyle(type, value);
 
-          this.getActiveStyle();
-        }
-      );
-    });
+            this.getActiveStyles();
+          }
+        );
+      });
   }
 
   addStyle = (type, value) => {
@@ -29,12 +30,15 @@ class ActionPanel {
     this.main.style.removeProperty(type);
   };
 
-  getActiveStyle = () => {
-    document.querySelectorAll('[data-type]').forEach((btn) => {
+  removeAllActiveStyles = () => {
+    this.styleElements.forEach((btn) => {
       btn.classList.remove('active-style');
     });
+  };
 
-    document.querySelectorAll('[data-type]').forEach((btn) => {
+  getActiveStyles = () => {
+    this.removeAllActiveStyles();
+    this.styleElements.forEach((btn) => {
       if (
         btn.dataset.value === this.main.style.getPropertyValue(btn.dataset.type)
       ) {
@@ -44,8 +48,4 @@ class ActionPanel {
   };
 }
 
-const action = new ActionPanel(
-  document.querySelectorAll('[data-action="change-style-panel"]'),
-  document.querySelectorAll('[data-style-dropdown="dropdown-btn"]'),
-  document.getElementById('main')
-);
+const action = new ActionPanel(document.getElementById('main'));

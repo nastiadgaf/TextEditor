@@ -51,7 +51,8 @@ class TableModal extends Dropdown {
         }
         newTable.append(row);
       }
-      main.append(newTable);
+      this.main.querySelector('.table__block-edit').append(newTable.innerHTML);
+      this.main.querySelector('.table__block-view').append(newTable);
       this.closeModal('table-modal');
     }
   };

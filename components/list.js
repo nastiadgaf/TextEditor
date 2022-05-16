@@ -61,7 +61,8 @@ class List extends Dropdown {
         newLi.style.setProperty('list-style-type', liType);
         newList.append(newLi);
       }
-      this.main.append(newList);
+      this.main.querySelector('.list__block-edit').append(newList.innerHTML);
+      this.main.querySelector('.list__block-view').append(newList);
       this.closeModal(modal);
     }
   };
