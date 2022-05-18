@@ -10,7 +10,6 @@ class InputModal extends Dropdown {
     this.signInButton = document.querySelector('[data-input="button"]');
     this.inputBlock = document.querySelector('.inputs');
     this.switchPanelBtn = document.querySelector('#switch-panel');
-    console.log(this.switchPanelBtn);
     this.switchPanelBtn.disabled = true;
 
     this.cancel = document.querySelector('[data-click="cancel"]');

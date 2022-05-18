@@ -39,6 +39,10 @@ li {
   font-weight: bold;
 }
 
+li {
+  list-style-position: inside;
+}
+
 .italic {
   font-style: italic;
 }
@@ -75,4 +79,7 @@ li {
   font-style: normal !important;
   text-align: center !important;
   font-weight: normal !important;
+  text-decoration: none !important;
+  font-family: serif !important;
+  text-align: left !important;
 }

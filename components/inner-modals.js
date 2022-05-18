@@ -15,13 +15,16 @@ class InnerModals {
         ).style.background = `url(${e.target.result})`;
       });
     });
-    document.querySelector('.modal__list').addEventListener('click', (e) => {
-      document.querySelectorAll(`[data-inner-modal]`).forEach((modal) => {
-        modal.classList.add('hidden');
+
+    document.querySelectorAll('[data-change-inner-modal]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll(`[data-inner-modal]`).forEach((modal) => {
+          modal.classList.add('hidden');
+        });
+        document
+          .querySelector(`#${e.target.dataset.modal}`)
+          .classList.remove('hidden');
       });
-      document
-        .querySelector(`#${e.target.dataset.modal}`)
-        .classList.remove('hidden');
     });
   }
 }

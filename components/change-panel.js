@@ -27,7 +27,6 @@ class ChangePanel {
       editedText.classList.add('text', 'main__text');
       editedText.textContent = area.value;
 
-      this.changeVisiblePanel('.edit-panel', '.view-panel');
       this.main.querySelector('.text__block').append(editedText);
 
       area.remove();
@@ -46,7 +45,7 @@ class ChangePanel {
     this.toggleModalBtn.addEventListener('click', () => {
       this.togglePanels('#log-out');
       this.togglePanels('#log-in');
-
+      this.changeVisiblePanel('.edit-panel', '.view-panel');
       if (!this.checkPanelTextContent()) {
         this.transformParagraphToTextArea();
       } else {
